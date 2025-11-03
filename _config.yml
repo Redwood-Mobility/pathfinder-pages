@@ -1,0 +1,58 @@
+# Pathfinder Rewards - Rangeway Energy
+# Jekyll configuration for GitHub Pages
+
+# Site settings
+title: Pathfinder Rewards | Rangeway Energy
+description: "Earn benefits while exploring America's scenic highways. Join Rangeway Energy's loyalty program for exclusive discounts, experiences, and community."
+url: "https://pathfinder.rangeway.energy"
+baseurl: ""
+
+# Organization info
+organization:
+  name: Rangeway Energy
+  tagline: "Pathfinder Rewards - Explore More. Earn More."
+  main_site: "https://rangeway.energy"
+  newsroom_site: "https://newsroom.rangeway.energy"
+  email: hello@rangeway.energy
+  phone: "(650) 420-6300"
+  phone_raw: "6504206300"
+  address:
+    street: "2661 Market Street #87587"
+    city: "San Francisco"
+    state: "CA"
+    zip: "94114"
+
+# Social media
+social:
+  twitter: "https://x.com/rangewayenergy"
+  instagram: "https://instagram.com/rangewayenergy"
+  linkedin: "https://linkedin.com/company/rangewayenergy"
+  youtube: "https://youtube.com/@rangewayenergy"
+
+# Page metadata
+pages:
+  index:
+    title: "Pathfinder Rewards | Rangeway Energy"
+    description: "Earn benefits while exploring America's scenic highways. Join Rangeway Energy's loyalty program for exclusive discounts, experiences, and community."
+    keywords: "Pathfinder Rewards, Rangeway loyalty program, EV charging rewards, travel rewards, membership tiers"
+    og_image: ""
+  playbook:
+    title: "Pathfinder Rewards Playbook | Rangeway Energy"
+    description: "Comprehensive guide to the Pathfinder Rewards program - membership tiers, benefits, launch strategy, and operational guidelines."
+    keywords: "Pathfinder playbook, loyalty program guide, membership benefits, Rangeway rewards"
+    og_image: ""
+
+# Build settings
+markdown: kramdown
+theme: null
+plugins:
+  - jekyll-seo-tag
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .gitignore
+  - vendor
+  - .bundle
