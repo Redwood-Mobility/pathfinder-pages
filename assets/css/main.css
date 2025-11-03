@@ -1062,7 +1062,7 @@ section {
 
 /* Adjust Mountain Passes image to show more of the lower part */
 .location-card:nth-child(2) .location-image {
-    object-position: center 60%;
+    object-position: center 80%;
 }
 
 .location-card:hover .location-image {
