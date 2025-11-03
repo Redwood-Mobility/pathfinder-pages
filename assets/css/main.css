@@ -49,13 +49,21 @@ nav.scrolled {
     gap: 2rem;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    color: var(--golden-highway);
+.logo-link {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     z-index: 1001;
+}
+
+.nav-logo {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.05);
 }
 
 /* Desktop Navigation Links */
@@ -1170,8 +1178,8 @@ footer {
         display: none;
     }
 
-    .logo {
-        font-size: 1.3rem;
+    .nav-logo {
+        height: 32px;
     }
 
     /* Body spacing for mobile nav */
