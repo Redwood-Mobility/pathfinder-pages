@@ -69,6 +69,6 @@
     </div>
 </footer>
 
-{% if page.script %}
-<script src="{{ '/assets/js/' | append: page.script | append: '.js' | relative_url }}"></script>
-{% endif %}
+<!-- External JavaScript -->
+<script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.asset_version }}"></script>
+
