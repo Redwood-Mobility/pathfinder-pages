@@ -836,6 +836,13 @@ section {
     background: var(--ocean-deep);
 }
 
+/* First section on standalone pages needs top margin for fixed navbar */
+.tiers:first-of-type,
+.benefits:first-of-type,
+.calculator-section:first-of-type {
+    margin-top: 80px;
+}
+
 .tiers-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1449,8 +1456,74 @@ footer {
         width: 100%;
     }
 
+    .section-header {
+        padding: 0 1rem;
+    }
+
     .section-header h2 {
         font-size: 2rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    /* Add top spacing for all sections to account for fixed navbar */
+    section {
+        scroll-margin-top: 80px;
+    }
+
+    /* Benefits section mobile */
+    .benefits {
+        padding: 3rem 1rem;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .benefit-card {
+        padding: 1.5rem;
+    }
+
+    .benefit-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    /* Tiers section mobile */
+    .tiers {
+        padding: 3rem 1rem;
+    }
+
+    /* First section on standalone pages needs top margin */
+    .tiers:first-of-type,
+    .benefits:first-of-type,
+    .calculator-section:first-of-type {
+        margin-top: 70px;
+        padding-top: 3rem;
+    }
+
+    /* Calculator section mobile */
+    .calculator-section {
+        padding: 3rem 1rem;
+    }
+
+    .calculator-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Locations section mobile */
+    .locations {
+        padding: 3rem 1rem;
+    }
+
+    /* CTA section mobile */
+    .cta-section {
+        padding: 3rem 1rem;
     }
 
     /* Statistics Section Mobile */
@@ -1566,6 +1639,18 @@ footer {
     .comparison-table .feature-column {
         min-width: 150px;
         font-size: 0.85rem;
+    }
+
+    /* Improve table scrolling on mobile */
+    .tiers-table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -1rem;
+        padding: 0 1rem;
+    }
+
+    .comparison-table {
+        min-width: 600px;
     }
 
     /* Add scroll indicator for table on mobile */
