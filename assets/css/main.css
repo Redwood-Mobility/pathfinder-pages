@@ -45,15 +45,15 @@ body {
 
 /* Branded Navigation */
 .navbar {
-    background: white;
+    background: var(--mountain-charcoal);
     padding: 1rem 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-wrapper {
@@ -64,7 +64,7 @@ body {
 
 .logo h2 {
     font-size: 1.5rem;
-    color: var(--mountain-charcoal);
+    color: var(--coastal-cream);
     margin: 0;
 }
 
@@ -75,7 +75,7 @@ body {
 }
 
 .nav-link {
-    color: var(--mountain-charcoal);
+    color: var(--coastal-cream);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -98,7 +98,7 @@ body {
 }
 
 .social-icon {
-    color: var(--mountain-charcoal);
+    color: var(--coastal-cream);
     font-size: 1.5rem;
     transition: color 0.3s ease, transform 0.3s ease;
     display: flex;
@@ -116,7 +116,7 @@ body {
 }
 
 .social-icon i {
-    color: var(--mountain-charcoal);
+    color: var(--coastal-cream);
 }
 
 .social-icon:hover i {
@@ -133,7 +133,7 @@ body {
 .mobile-menu-toggle span {
     width: 25px;
     height: 3px;
-    background: var(--mountain-charcoal);
+    background: var(--coastal-cream);
     border-radius: 2px;
     transition: 0.3s;
 }
