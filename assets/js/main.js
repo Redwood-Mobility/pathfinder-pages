@@ -65,18 +65,20 @@ document.querySelectorAll('.tier-card, .benefit-card').forEach(card => {
 });
 
 // ===== ANIMATED STATISTICS COUNTERS =====
-function animateCounter(element, target, duration = 2000, suffix = '') {
+function animateCounter(element, target, duration = 2000, suffix = '', noComma = false) {
     const start = 0;
     const increment = target / (duration / 16); // 60fps
     let current = start;
 
+    const formatNumber = (num) => noComma ? num.toString() : num.toLocaleString();
+
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
-            element.textContent = target.toLocaleString() + suffix;
+            element.textContent = formatNumber(target) + suffix;
             clearInterval(timer);
         } else {
-            element.textContent = Math.floor(current).toLocaleString() + suffix;
+            element.textContent = formatNumber(Math.floor(current)) + suffix;
         }
     }, 16);
 }
@@ -90,7 +92,8 @@ const statsObserver = new IntersectionObserver((entries) => {
             statNumbers.forEach(statNumber => {
                 const target = parseInt(statNumber.dataset.target);
                 const suffix = statNumber.dataset.suffix || '';
-                animateCounter(statNumber, target, 1500, suffix);
+                const noComma = statNumber.dataset.noComma === 'true';
+                animateCounter(statNumber, target, 1500, suffix, noComma);
             });
 
             // Unobserve after animation triggers
