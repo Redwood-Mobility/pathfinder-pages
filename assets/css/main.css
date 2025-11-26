@@ -11,6 +11,12 @@
     --coastal-cream: #F5DEB3;
     --ocean-deep: #2C5F7C;
     --fog-gray: #B8B8B8;
+
+    /* Tier Colors */
+    --tier-explorer: #B87333;     /* Bronze */
+    --tier-voyager: #C0C0C0;      /* Silver */
+    --tier-pioneer: #FFD700;      /* Gold */
+    --tier-trailblazer: #2C2C2C;  /* Platinum Black */
 }
 
 body {
@@ -982,28 +988,96 @@ section {
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
-.tier-card.featured {
-    border-color: var(--sunset-coral);
+/* Tier-specific border colors */
+.tier-card:nth-child(1) {
+    border-color: var(--tier-explorer);
 }
 
-.tier-card.featured::before {
-    content: 'MOST POPULAR';
+.tier-card:nth-child(2) {
+    border-color: var(--tier-voyager);
+}
+
+.tier-card:nth-child(3) {
+    border-color: var(--tier-pioneer);
+}
+
+.tier-card:nth-child(4) {
+    border-color: var(--tier-trailblazer);
+}
+
+/* Elite Status badge for Pioneer tier */
+.tier-card:nth-child(3)::before {
+    content: 'ELITE STATUS';
     position: absolute;
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--sunset-coral);
+    background: var(--tier-pioneer);
     color: var(--mountain-charcoal);
     padding: 0.5rem 1.5rem;
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.05em;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* Invite Only styling for Trailblazer tier */
+.tier-card.invite-only {
+    border-color: var(--tier-trailblazer);
+    background: linear-gradient(rgba(44, 44, 44, 0.95), rgba(26, 61, 80, 0.90)),
+                url('../../images/trailhead-interior1.jpg');
+}
+
+.tier-card.invite-only::before {
+    content: 'INVITE ONLY';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--tier-trailblazer);
+    color: var(--coastal-cream);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: 2px solid var(--golden-highway);
 }
 
 .tier-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Tier-specific icon backgrounds */
+.tier-card:nth-child(1) .tier-icon {
+    background: linear-gradient(135deg, var(--tier-explorer), rgba(184, 115, 51, 0.7));
+    box-shadow: 0 4px 15px rgba(184, 115, 51, 0.3);
+}
+
+.tier-card:nth-child(2) .tier-icon {
+    background: linear-gradient(135deg, var(--tier-voyager), rgba(192, 192, 192, 0.7));
+    box-shadow: 0 4px 15px rgba(192, 192, 192, 0.3);
+}
+
+.tier-card:nth-child(3) .tier-icon {
+    background: linear-gradient(135deg, var(--tier-pioneer), rgba(255, 215, 0, 0.7));
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+.tier-card:nth-child(4) .tier-icon {
+    background: linear-gradient(135deg, var(--tier-trailblazer), rgba(44, 44, 44, 0.7));
+    box-shadow: 0 4px 15px rgba(255, 179, 102, 0.3);
+    border: 2px solid var(--golden-highway);
 }
 
 .tier-name {
@@ -1082,6 +1156,86 @@ section {
     box-shadow: 0 4px 12px rgba(240, 144, 96, 0.3);
 }
 
+/* Tier Qualification Badge */
+.tier-qualification {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+    border: 2px solid;
+}
+
+/* Qualification badge for earned tiers */
+.tier-card:nth-child(1) .tier-qualification,
+.tier-card:nth-child(2) .tier-qualification,
+.tier-card:nth-child(3) .tier-qualification {
+    background: rgba(240, 144, 96, 0.15);
+    border-color: var(--sunset-coral);
+    color: var(--coastal-cream);
+}
+
+/* Qualification badge for invite-only tier */
+.tier-card.invite-only .tier-qualification {
+    background: rgba(255, 179, 102, 0.15);
+    border-color: var(--golden-highway);
+    color: var(--golden-highway);
+    font-style: italic;
+}
+
+/* Credit Back Display */
+.credit-back {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(240, 144, 96, 0.1);
+    border-radius: 12px;
+    border-left: 4px solid;
+    text-align: center;
+}
+
+/* Tier-specific credit-back colors */
+.tier-card:nth-child(1) .credit-back {
+    border-color: var(--tier-explorer);
+    color: var(--tier-explorer);
+}
+
+.tier-card:nth-child(2) .credit-back {
+    border-color: var(--tier-voyager);
+    color: var(--tier-voyager);
+}
+
+.tier-card:nth-child(3) .credit-back {
+    border-color: var(--tier-pioneer);
+    color: var(--tier-pioneer);
+}
+
+.tier-card:nth-child(4) .credit-back {
+    border-color: var(--golden-highway);
+    color: var(--golden-highway);
+}
+
+.credit-back .percentage {
+    display: block;
+    font-size: 2.5rem;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+}
+
+.credit-back .label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Updated invite-only tier styling */
 .tier-card.invite-only {
     border-color: var(--golden-highway);
 }
@@ -1491,6 +1645,33 @@ footer {
         width: 50px;
         height: 50px;
         font-size: 1.5rem;
+    }
+
+    /* Tier icon mobile sizing */
+    .tier-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+
+    /* Credit back mobile sizing */
+    .credit-back {
+        font-size: 1.5rem;
+        padding: 0.75rem;
+    }
+
+    .credit-back .percentage {
+        font-size: 2rem;
+    }
+
+    .credit-back .label {
+        font-size: 0.85rem;
+    }
+
+    /* Tier qualification mobile sizing */
+    .tier-qualification {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.75rem;
     }
 
     /* Tiers section mobile */

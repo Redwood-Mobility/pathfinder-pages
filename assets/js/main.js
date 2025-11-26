@@ -111,45 +111,76 @@ if (statsSection) {
 const tierData = {
     explorer: {
         name: 'Explorer',
-        price: 'Free',
-        discount: 5,
-        monthlyFee: 0,
-        annualCredit: 0
+        qualification: 'Automatic',
+        creditBack: 0,      // No credits
+        annualCredit: 0,
+        birthdayCredit: 0,
+        sessionsRequired: 0  // Auto on first session
     },
     voyager: {
         name: 'Voyager',
-        price: '$12/mo',
-        discount: 10,
-        monthlyFee: 12,
-        annualCredit: 0
+        qualification: '10-24 sessions/year',
+        creditBack: 5,      // 5% credits back
+        annualCredit: 0,
+        birthdayCredit: 25, // $25 birthday credit
+        sessionsRequired: 10
     },
     pioneer: {
         name: 'Pioneer',
-        price: '$25/mo',
-        discount: 15,
-        monthlyFee: 25,
-        annualCredit: 100
+        qualification: '25-49 sessions/year',
+        creditBack: 10,     // 10% credits back
+        annualCredit: 100,  // $100 annual milestone
+        birthdayCredit: 0,
+        seasonalBonus: 25,  // $25 summer bonus
+        sessionsRequired: 25
+    },
+    trailblazer: {
+        name: 'Trailblazer',
+        qualification: 'Invite Only',
+        creditBack: 15,     // 15% credits back
+        annualCredit: 500,  // $500 annual credit
+        birthdayCredit: 0,
+        sessionsRequired: null  // Invite only
     }
 };
 
-const avgCharge = 40;
+const avgCharge = 40; // $0.50/kWh * 80 kWh average session
 
-function calculateSavings(sessions, tierKey) {
+function calculateCredits(sessions, tierKey) {
     const tier = tierData[tierKey];
-    const monthlyCost = sessions * avgCharge;
-    const monthlySavings = (monthlyCost * tier.discount / 100) - tier.monthlyFee;
-    const annualSavings = (monthlySavings * 12) + tier.annualCredit;
 
-    let roiMonths = 'N/A';
-    if (tier.monthlyFee > 0 && monthlySavings > 0) {
-        roiMonths = Math.ceil(tier.monthlyFee / monthlySavings);
-    }
+    // Base credits from charging (sessions * avg charge * credit back percentage)
+    const baseCredits = sessions * avgCharge * (tier.creditBack / 100);
+
+    // Annual credits and bonuses
+    const annualCredits = tier.annualCredit || 0;
+    const birthdayCredit = tier.birthdayCredit || 0;
+    const seasonalBonus = tier.seasonalBonus || 0;
+
+    // Total credits earned
+    const totalCredits = baseCredits + annualCredits + birthdayCredit + seasonalBonus;
 
     return {
-        monthly: monthlySavings,
-        annual: annualSavings,
-        roi: roiMonths
+        baseCredits: baseCredits,
+        bonusCredits: annualCredits + birthdayCredit + seasonalBonus,
+        totalCredits: totalCredits
     };
+}
+
+function getQualifiedTier(sessions) {
+    // Determine which tier the user qualifies for based on session count
+    if (sessions >= 25) return 'pioneer';
+    if (sessions >= 10) return 'voyager';
+    return 'explorer';
+}
+
+function getNextTier(currentTier) {
+    const tierOrder = ['explorer', 'voyager', 'pioneer', 'trailblazer'];
+    const currentIndex = tierOrder.indexOf(currentTier);
+    if (currentIndex < tierOrder.length - 1) {
+        return tierOrder[currentIndex + 1];
+    }
+    return null;
 }
 
 function formatMoney(amount) {
@@ -171,50 +202,60 @@ function animateValue(element, newValue) {
 function updateCalculator(sessions) {
     const resultsContainer = document.getElementById('calculator-results');
 
-    // Calculate which tier is recommended
-    let maxValue = -Infinity;
-    let recommendedTier = 'explorer';
-
-    Object.keys(tierData).forEach(tierKey => {
-        const savings = calculateSavings(sessions, tierKey);
-        if (savings.annual > maxValue) {
-            maxValue = savings.annual;
-            recommendedTier = tierKey;
-        }
-    });
+    // Determine qualified tier based on session count
+    const qualifiedTier = getQualifiedTier(sessions);
+    const nextTier = getNextTier(qualifiedTier);
 
     // Generate HTML for all tiers
     resultsContainer.innerHTML = Object.keys(tierData).map(tierKey => {
         const tier = tierData[tierKey];
-        const savings = calculateSavings(sessions, tierKey);
-        const isRecommended = tierKey === recommendedTier && sessions > 0;
+        const credits = calculateCredits(sessions, tierKey);
+        const isQualified = tierKey === qualifiedTier;
+        const isNextGoal = tierKey === nextTier;
 
-        let roiText = '';
-        if (tierKey === 'explorer') {
-            roiText = 'No membership fee';
-        } else if (tierKey === 'trailblazer') {
-            roiText = 'Invitation only';
-        } else if (savings.roi === 'N/A' || savings.monthly <= 0) {
-            roiText = 'Increase sessions for positive ROI';
-        } else if (savings.roi === 1) {
-            roiText = 'Pays for itself in 1 month';
-        } else {
-            roiText = `Pays for itself in ${savings.roi} months`;
+        // Determine status badge
+        let statusBadge = '';
+        if (isQualified) {
+            statusBadge = '<div class="calc-status-badge qualified">YOUR STATUS</div>';
+        } else if (isNextGoal) {
+            statusBadge = '<div class="calc-status-badge next-goal">NEXT GOAL</div>';
+        }
+
+        // Calculate sessions needed to reach this tier
+        let qualificationText = tier.qualification;
+        if (!isQualified && tier.sessionsRequired !== null && sessions < tier.sessionsRequired) {
+            const sessionsNeeded = tier.sessionsRequired - sessions;
+            qualificationText += ` • ${sessionsNeeded} more session${sessionsNeeded !== 1 ? 's' : ''} to qualify`;
+        }
+
+        // Build credit breakdown text
+        let creditBreakdown = '';
+        if (tier.creditBack > 0) {
+            creditBreakdown += `${tier.creditBack}% back on charging`;
+        }
+        if (tier.annualCredit > 0) {
+            creditBreakdown += (creditBreakdown ? ' + ' : '') + `$${tier.annualCredit} annual credit`;
+        }
+        if (tier.birthdayCredit > 0) {
+            creditBreakdown += (creditBreakdown ? ' + ' : '') + `$${tier.birthdayCredit} birthday credit`;
+        }
+        if (tier.seasonalBonus > 0) {
+            creditBreakdown += (creditBreakdown ? ' + ' : '') + `$${tier.seasonalBonus} seasonal bonus`;
+        }
+        if (!creditBreakdown) {
+            creditBreakdown = 'No credits earned';
         }
 
         return `
-            <div class="calc-result-card ${isRecommended ? 'recommended' : ''}">
+            <div class="calc-result-card ${isQualified ? 'recommended' : ''} ${isNextGoal ? 'next-tier' : ''}">
+                ${statusBadge}
                 <div class="calc-tier-name">${tier.name}</div>
-                <div class="calc-tier-price">${tier.price}</div>
+                <div class="calc-tier-qualification">${qualificationText}</div>
                 <div class="calc-metric">
-                    <div class="calc-metric-label">Monthly Savings</div>
-                    <div class="calc-metric-value">${formatMoney(savings.monthly)}</div>
+                    <div class="calc-metric-label">Credits Earned</div>
+                    <div class="calc-metric-value">${formatMoney(credits.totalCredits)}</div>
                 </div>
-                <div class="calc-metric">
-                    <div class="calc-metric-label">Annual Savings</div>
-                    <div class="calc-metric-value">${formatMoney(savings.annual)}</div>
-                </div>
-                <div class="calc-roi">${roiText}</div>
+                <div class="calc-credit-breakdown">${creditBreakdown}</div>
             </div>
         `;
     }).join('');
