@@ -40,8 +40,8 @@ The site will be available at `http://localhost:4000`
 5. Select folder: `/ (root)`
 6. Save
 
-### Custom Domain Setup (rangeway.app)
-1. In repository Settings > Pages, set Custom domain to: `rangeway.app`
+### Custom Domain Setup (pathfinderrewards.com)
+1. In repository Settings > Pages, set Custom domain to: `pathfinderrewards.com`
 2. Check "Enforce HTTPS"
 3. Add DNS records at your domain provider:
    - Type: CNAME
