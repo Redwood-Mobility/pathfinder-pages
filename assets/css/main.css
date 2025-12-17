@@ -935,8 +935,8 @@ section {
 
 .tiers-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
     max-width: 1600px;
     margin: 0 auto;
     transition: opacity 0.3s ease;
@@ -1940,7 +1940,7 @@ footer {
 }
 
 /* Tablet/Medium screens */
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1200px) {
     .nav-container {
         padding: 1rem 1.5rem;
     }
