@@ -243,13 +243,13 @@ section {
 
 .btn-secondary {
     background: transparent;
-    color: var(--white);
-    border: 2px solid var(--white);
+    color: #ffffff;
+    border: 2px solid #ffffff;
 }
 
 .btn-secondary:hover {
-    background: var(--white);
-    color: var(--charcoal);
+    background: #ffffff;
+    color: #2d2d2d;
 }
 
 .btn-outline {
