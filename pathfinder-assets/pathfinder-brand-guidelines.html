@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathfinder Rewards Brand Guidelines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #2d2d2d;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: #fff;
+    }
+    
+    .cover {
+      text-align: center;
+      padding: 80px 40px;
+      background: #2d2d2d;
+      border-radius: 16px;
+      margin-bottom: 48px;
+    }
+    
+    .cover-logo {
+      margin-bottom: 24px;
+    }
+    
+    .cover h1 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+    
+    .cover .subtitle {
+      color: rgba(255,255,255,0.6);
+      font-size: 16px;
+    }
+    
+    .section {
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    
+    .section:last-child {
+      border-bottom: none;
+    }
+    
+    .section-label {
+      font-family: 'Raleway', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #f4a855;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    
+    h2 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    
+    .section-intro {
+      color: #666;
+      margin-bottom: 24px;
+      max-width: 600px;
+    }
+    
+    h3 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    
+    p {
+      margin-bottom: 12px;
+    }
+    
+    .logo-showcase {
+      display: flex;
+      gap: 24px;
+      margin: 24px 0;
+    }
+    
+    .logo-card {
+      flex: 1;
+      border-radius: 12px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      min-height: 180px;
+    }
+    
+    .logo-card.dark {
+      background: #2d2d2d;
+    }
+    
+    .logo-card.light {
+      background: #f5f1eb;
+    }
+    
+    .logo-card.warm {
+      background: linear-gradient(135deg, #f4a855 0%, #e8923a 100%);
+    }
+    
+    .logo-card-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .logo-card-label.light {
+      color: rgba(255,255,255,0.6);
+    }
+    
+    .logo-card-label.dark {
+      color: #999;
+    }
+    
+    .lockup-row {
+      background: #2d2d2d;
+      border-radius: 12px;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 16px 0;
+    }
+    
+    .lockup-row.light {
+      background: #f5f1eb;
+    }
+    
+    .wordmark {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+    
+    .wordmark.white {
+      color: white;
+    }
+    
+    .wordmark.dark {
+      color: #2d2d2d;
+    }
+    
+    .construction {
+      background: #f8f8f8;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 24px 0;
+    }
+    
+    .construction-grid {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    
+    .construction-desc {
+      flex: 1;
+    }
+    
+    .construction-desc ul {
+      margin-left: 20px;
+      color: #666;
+    }
+    
+    .construction-desc li {
+      margin-bottom: 8px;
+    }
+    
+    .clear-space {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      background: #f8f8f8;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 24px 0;
+    }
+    
+    .clear-space-demo {
+      position: relative;
+      padding: 24px;
+      border: 2px dashed #f4a855;
+    }
+    
+    .clear-space-label {
+      position: absolute;
+      font-size: 10px;
+      color: #f4a855;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .clear-space-label.top {
+      top: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .clear-space-label.side {
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+    }
+    
+    .size-grid {
+      display: flex;
+      gap: 24px;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 32px;
+      background: #f8f8f8;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+    
+    .size-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .size-item span {
+      font-size: 10px;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+    
+    .color-card {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .color-swatch {
+      height: 80px;
+    }
+    
+    .color-swatch.charcoal { background: #2d2d2d; }
+    .color-swatch.warm { background: #f4a855; }
+    .color-swatch.cream { background: #f5f1eb; border: 1px solid #e5e5e5; }
+    
+    .color-info {
+      padding: 12px;
+      background: #f8f8f8;
+      border: 1px solid #e5e5e5;
+      border-top: none;
+    }
+    
+    .color-name {
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    
+    .color-values {
+      font-size: 11px;
+      color: #666;
+      font-family: monospace;
+    }
+    
+    .donts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+    }
+    
+    .dont-card {
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .dont-demo {
+      background: #f5f5f5;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100px;
+      position: relative;
+    }
+    
+    .dont-demo::after {
+      content: "✕";
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      color: #c00;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    
+    .dont-label {
+      padding: 12px;
+      font-size: 12px;
+      color: #666;
+      background: white;
+    }
+    
+    .partner-grid {
+      display: flex;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    
+    .partner-card {
+      flex: 1;
+      border-radius: 12px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .partner-name {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.6);
+    }
+    
+    .file-list {
+      background: #f8f8f8;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 16px 0;
+    }
+    
+    .file-list h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #999;
+      margin-bottom: 12px;
+    }
+    
+    .file-list ul {
+      list-style: none;
+      font-family: monospace;
+      font-size: 12px;
+      color: #666;
+    }
+    
+    .file-list li {
+      padding: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      .logo-showcase {
+        flex-direction: column;
+      }
+      .color-grid, .donts-grid {
+        grid-template-columns: 1fr;
+      }
+      .partner-grid {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Cover -->
+  <div class="cover">
+    <div class="cover-logo">
+      <svg width="80" height="80" viewBox="0 0 52 52">
+        <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+              stroke="#ffffff" stroke-width="4" fill="none"/>
+        <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+              stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+              stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+        <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+      </svg>
+    </div>
+    <h1>Pathfinder Rewards</h1>
+    <div class="subtitle">Brand Guidelines · December 2025</div>
+  </div>
+  
+  <!-- Overview -->
+  <div class="section">
+    <div class="section-label">Overview</div>
+    <h2>About Pathfinder Rewards</h2>
+    <p class="section-intro">Pathfinder Rewards is the unified loyalty program across Rangeway, Altara Energy, and ChargeVia. The brand identity reflects navigation, earned status, and the journey toward your destination.</p>
+    
+    <h3>Brand Concept</h3>
+    <p>The Pathfinder mark combines a <strong>rounded badge</strong> (signaling earned status and collectibility) with a <strong>compass</strong> (signaling navigation and finding your way). The warm amber center dot represents your destination, the reward that awaits.</p>
+    
+    <p>The 8-point compass uses visual hierarchy: cardinal points (N, S, E, W) are bold, intercardinal points are subtle. This creates depth without complexity.</p>
+  </div>
+  
+  <!-- The Mark -->
+  <div class="section">
+    <div class="section-label">Logo</div>
+    <h2>The Pathfinder Mark</h2>
+    <p class="section-intro">The primary logo consists of the Pathfinder mark. It can be used alone or paired with the wordmark.</p>
+    
+    <div class="logo-showcase">
+      <div class="logo-card dark">
+        <svg width="64" height="64" viewBox="0 0 52 52">
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#ffffff" stroke-width="4" fill="none"/>
+          <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+                stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+        </svg>
+        <span class="logo-card-label light">On Dark</span>
+      </div>
+      <div class="logo-card light">
+        <svg width="64" height="64" viewBox="0 0 52 52">
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#2d2d2d" stroke-width="4" fill="none"/>
+          <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                stroke="#2d2d2d" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+                stroke="#2d2d2d" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+          <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+        </svg>
+        <span class="logo-card-label dark">On Light</span>
+      </div>
+      <div class="logo-card warm">
+        <svg width="64" height="64" viewBox="0 0 52 52">
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#ffffff" stroke-width="4" fill="none"/>
+          <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+                stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <circle cx="26" cy="26" r="7" fill="#2d2d2d"/>
+        </svg>
+        <span class="logo-card-label light">On Warm</span>
+      </div>
+    </div>
+    
+    <h3>Construction</h3>
+    <div class="construction">
+      <div class="construction-grid">
+        <svg width="120" height="120" viewBox="0 0 52 52">
+          <!-- Grid lines for construction -->
+          <line x1="26" y1="0" x2="26" y2="52" stroke="#f4a855" stroke-width="0.5" opacity="0.3"/>
+          <line x1="0" y1="26" x2="52" y2="26" stroke="#f4a855" stroke-width="0.5" opacity="0.3"/>
+          <line x1="0" y1="0" x2="52" y2="52" stroke="#f4a855" stroke-width="0.5" opacity="0.3"/>
+          <line x1="52" y1="0" x2="0" y2="52" stroke="#f4a855" stroke-width="0.5" opacity="0.3"/>
+          <!-- The mark -->
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#2d2d2d" stroke-width="4" fill="none"/>
+          <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                stroke="#2d2d2d" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+                stroke="#2d2d2d" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+          <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+        </svg>
+        <div class="construction-desc">
+          <ul>
+            <li><strong>Badge:</strong> Rounded rectangle, corner radius ~20% of width</li>
+            <li><strong>Cardinal points:</strong> 3.5pt stroke, full opacity</li>
+            <li><strong>Intercardinal points:</strong> 2.5pt stroke, 40% opacity</li>
+            <li><strong>Center dot:</strong> ~14% of badge width, always Warm (#f4a855)</li>
+            <li><strong>Stroke weight:</strong> 4pt for badge outline</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <h3>Clear Space</h3>
+    <p>Maintain clear space equal to the center dot diameter on all sides of the mark.</p>
+    <div class="clear-space">
+      <div class="clear-space-demo">
+        <span class="clear-space-label top">1x</span>
+        <span class="clear-space-label side">1x</span>
+        <svg width="64" height="64" viewBox="0 0 52 52">
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#2d2d2d" stroke-width="4" fill="none"/>
+          <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                stroke="#2d2d2d" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+                stroke="#2d2d2d" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+          <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Lockups -->
+  <div class="section">
+    <div class="section-label">Lockups</div>
+    <h2>Logo + Wordmark</h2>
+    <p class="section-intro">The Pathfinder mark can be paired with the wordmark in horizontal or stacked configurations.</p>
+    
+    <h3>Horizontal Lockup</h3>
+    <p>Primary lockup for most applications. Use when horizontal space is available.</p>
+    <div class="lockup-row">
+      <svg width="52" height="52" viewBox="0 0 52 52">
+        <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+              stroke="#ffffff" stroke-width="4" fill="none"/>
+        <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+              stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+              stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+        <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+      </svg>
+      <span class="wordmark white">Pathfinder Rewards</span>
+    </div>
+    <div class="lockup-row light">
+      <svg width="52" height="52" viewBox="0 0 52 52">
+        <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+              stroke="#2d2d2d" stroke-width="4" fill="none"/>
+        <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+              stroke="#2d2d2d" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+              stroke="#2d2d2d" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+        <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+      </svg>
+      <span class="wordmark dark">Pathfinder Rewards</span>
+    </div>
+    
+    <h3>Stacked Lockup</h3>
+    <p>Use when vertical space is preferred or horizontal space is limited.</p>
+    <div class="logo-showcase">
+      <div class="logo-card dark" style="min-height: 200px;">
+        <svg width="56" height="56" viewBox="0 0 52 52">
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#ffffff" stroke-width="4" fill="none"/>
+          <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+                stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+        </svg>
+        <div style="text-align: center;">
+          <div class="wordmark white" style="font-size: 16px;">Pathfinder</div>
+          <div class="wordmark white" style="font-size: 16px;">Rewards</div>
+        </div>
+      </div>
+      <div class="logo-card light" style="min-height: 200px;">
+        <svg width="56" height="56" viewBox="0 0 52 52">
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#2d2d2d" stroke-width="4" fill="none"/>
+          <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                stroke="#2d2d2d" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+                stroke="#2d2d2d" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+          <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+        </svg>
+        <div style="text-align: center;">
+          <div class="wordmark dark" style="font-size: 16px;">Pathfinder</div>
+          <div class="wordmark dark" style="font-size: 16px;">Rewards</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Size & Scale -->
+  <div class="section">
+    <div class="section-label">Scale</div>
+    <h2>Minimum Sizes</h2>
+    <p class="section-intro">At very small sizes, use the simplified mark (badge + dot only, no compass details).</p>
+    
+    <div class="size-grid">
+      <div class="size-item">
+        <svg width="64" height="64" viewBox="0 0 52 52">
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#2d2d2d" stroke-width="4" fill="none"/>
+          <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                stroke="#2d2d2d" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+                stroke="#2d2d2d" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+          <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+        </svg>
+        <span>64px+</span>
+      </div>
+      <div class="size-item">
+        <svg width="48" height="48" viewBox="0 0 52 52">
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#2d2d2d" stroke-width="4" fill="none"/>
+          <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                stroke="#2d2d2d" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+                stroke="#2d2d2d" stroke-width="2.5" stroke-linecap="round" opacity="0.35"/>
+          <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+        </svg>
+        <span>48px</span>
+      </div>
+      <div class="size-item">
+        <svg width="32" height="32" viewBox="0 0 52 52">
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#2d2d2d" stroke-width="5" fill="none"/>
+          <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                stroke="#2d2d2d" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="26" cy="26" r="8" fill="#f4a855"/>
+        </svg>
+        <span>32px</span>
+      </div>
+      <div class="size-item">
+        <svg width="24" height="24" viewBox="0 0 52 52">
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#2d2d2d" stroke-width="6" fill="none"/>
+          <circle cx="26" cy="26" r="9" fill="#f4a855"/>
+        </svg>
+        <span>24px</span>
+      </div>
+      <div class="size-item">
+        <svg width="16" height="16" viewBox="0 0 52 52">
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#2d2d2d" stroke-width="7" fill="none"/>
+          <circle cx="26" cy="26" r="10" fill="#f4a855"/>
+        </svg>
+        <span>16px</span>
+      </div>
+    </div>
+    
+    <p><strong>32px and below:</strong> Use simplified mark (badge + warm dot only). Compass details become illegible at small sizes.</p>
+  </div>
+  
+  <!-- Color -->
+  <div class="section">
+    <div class="section-label">Color</div>
+    <h2>Brand Colors</h2>
+    <p class="section-intro">Pathfinder uses a focused palette that works across all partner brands.</p>
+    
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch charcoal"></div>
+        <div class="color-info">
+          <div class="color-name">Charcoal</div>
+          <div class="color-values">
+            HEX: #2d2d2d<br>
+            RGB: 45, 45, 45
+          </div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch warm"></div>
+        <div class="color-info">
+          <div class="color-name">Warm</div>
+          <div class="color-values">
+            HEX: #f4a855<br>
+            RGB: 244, 168, 85
+          </div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch cream"></div>
+        <div class="color-info">
+          <div class="color-name">Cream</div>
+          <div class="color-values">
+            HEX: #f5f1eb<br>
+            RGB: 245, 241, 235
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <p><strong>The warm center dot is always #f4a855</strong>, except when placed on a warm background, where it becomes Charcoal (#2d2d2d).</p>
+  </div>
+  
+  <!-- Typography -->
+  <div class="section">
+    <div class="section-label">Typography</div>
+    <h2>Wordmark Font</h2>
+    <p class="section-intro">The Pathfinder wordmark uses Raleway Bold, matching the Rangeway brand system.</p>
+    
+    <div style="background: #f8f8f8; border-radius: 12px; padding: 32px; margin: 24px 0;">
+      <div style="font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 36px; color: #2d2d2d; letter-spacing: -0.01em; margin-bottom: 16px;">
+        Pathfinder Rewards
+      </div>
+      <div style="font-family: monospace; font-size: 12px; color: #666;">
+        Raleway Bold · -0.01em letter-spacing
+      </div>
+    </div>
+  </div>
+  
+  <!-- Don'ts -->
+  <div class="section">
+    <div class="section-label">Usage</div>
+    <h2>Don'ts</h2>
+    <p class="section-intro">Avoid these common misuses to maintain brand consistency.</p>
+    
+    <div class="donts-grid">
+      <div class="dont-card">
+        <div class="dont-demo">
+          <svg width="48" height="48" viewBox="0 0 52 52" style="transform: rotate(45deg);">
+            <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                  stroke="#2d2d2d" stroke-width="4" fill="none"/>
+            <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+          </svg>
+        </div>
+        <div class="dont-label">Don't rotate the mark</div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-demo">
+          <svg width="48" height="48" viewBox="0 0 52 52">
+            <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                  stroke="#2d2d2d" stroke-width="4" fill="none"/>
+            <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                  stroke="#2d2d2d" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="26" cy="26" r="7" fill="#4a90d9"/>
+          </svg>
+        </div>
+        <div class="dont-label">Don't change the dot color</div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-demo">
+          <svg width="64" height="48" viewBox="0 0 68 52">
+            <rect x="4" y="4" width="60" height="44" rx="10" ry="10" 
+                  stroke="#2d2d2d" stroke-width="4" fill="none"/>
+            <circle cx="34" cy="26" r="7" fill="#f4a855"/>
+          </svg>
+        </div>
+        <div class="dont-label">Don't distort proportions</div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-demo" style="background: #2d2d2d;">
+          <svg width="48" height="48" viewBox="0 0 52 52">
+            <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                  stroke="#2d2d2d" stroke-width="4" fill="none"/>
+            <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+          </svg>
+        </div>
+        <div class="dont-label">Don't use dark mark on dark background</div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-demo">
+          <svg width="48" height="48" viewBox="0 0 52 52">
+            <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                  stroke="#2d2d2d" stroke-width="4" fill="#e8e8e8"/>
+            <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                  stroke="#2d2d2d" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+          </svg>
+        </div>
+        <div class="dont-label">Don't add fills to the badge</div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-demo">
+          <svg width="48" height="48" viewBox="0 0 52 52" style="filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));">
+            <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                  stroke="#2d2d2d" stroke-width="4" fill="none"/>
+            <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+          </svg>
+        </div>
+        <div class="dont-label">Don't add drop shadows</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Partner Brands -->
+  <div class="section">
+    <div class="section-label">Co-Branding</div>
+    <h2>Partner Brand Usage</h2>
+    <p class="section-intro">Pathfinder Rewards works across multiple brands. The mark adapts to each brand's background while maintaining its identity.</p>
+    
+    <div class="partner-grid">
+      <div class="partner-card" style="background: #2d2d2d;">
+        <svg width="48" height="48" viewBox="0 0 52 52">
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#ffffff" stroke-width="4" fill="none"/>
+          <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+                stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+        </svg>
+        <span class="partner-name">With Rangeway</span>
+      </div>
+      <div class="partner-card" style="background: #1a3a4a;">
+        <svg width="48" height="48" viewBox="0 0 52 52">
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#ffffff" stroke-width="4" fill="none"/>
+          <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+                stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <circle cx="26" cy="26" r="7" fill="#f4a855"/>
+        </svg>
+        <span class="partner-name">With Altara Energy</span>
+      </div>
+      <div class="partner-card" style="background: linear-gradient(135deg, #6B4C9A 0%, #4A3570 100%);">
+        <svg width="48" height="48" viewBox="0 0 52 52">
+          <rect x="4" y="4" width="44" height="44" rx="10" ry="10" 
+                stroke="#ffffff" stroke-width="4" fill="none"/>
+          <path d="M26 10 L26 19 M26 33 L26 42 M10 26 L19 26 M33 26 L42 26" 
+                stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M14 14 L18 18 M34 34 L38 38 M38 14 L34 18 M18 34 L14 38" 
+                stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <circle cx="26" cy="26" r="7" fill="#FF8C42"/>
+        </svg>
+        <span class="partner-name">With ChargeVia</span>
+      </div>
+    </div>
+    
+    <p><strong>Note:</strong> When used with ChargeVia, the center dot uses ChargeVia's orange (#FF8C42) to maintain brand harmony.</p>
+  </div>
+  
+  <!-- Asset Files -->
+  <div class="section">
+    <div class="section-label">Assets</div>
+    <h2>File Inventory</h2>
+    
+    <div class="file-list">
+      <h4>SVG (Vector)</h4>
+      <ul>
+        <li>pathfinder-mark-white.svg</li>
+        <li>pathfinder-mark-dark.svg</li>
+        <li>pathfinder-mark-small-white.svg (simplified for small sizes)</li>
+        <li>pathfinder-mark-small-dark.svg</li>
+        <li>pathfinder-lockup-horizontal-white.svg</li>
+        <li>pathfinder-lockup-horizontal-dark.svg</li>
+        <li>pathfinder-lockup-stacked-white.svg</li>
+        <li>pathfinder-lockup-stacked-dark.svg</li>
+      </ul>
+    </div>
+    
+    <div class="file-list">
+      <h4>PNG (Raster)</h4>
+      <ul>
+        <li>pathfinder-mark-[white/dark]-[16/24/32/48/64/128/256/512].png</li>
+        <li>pathfinder-mark-favicon-[white/dark]-[16/24/32].png (simplified)</li>
+        <li>pathfinder-lockup-horizontal-[white/dark].png</li>
+        <li>pathfinder-lockup-stacked-[white/dark].png</li>
+      </ul>
+    </div>
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,7 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rounded badge outline - heavier stroke for small sizes -->
+  <rect x="8" y="8" width="44" height="44" rx="10" ry="10" 
+        stroke="#2d2d2d" stroke-width="6" fill="none"/>
+  <!-- Warm center dot - larger for visibility -->
+  <circle cx="30" cy="30" r="9" fill="#f4a855"/>
+</svg>
