@@ -16,11 +16,17 @@
     --tier-pioneer: #FFD700;
     --tier-trailblazer: #1a1a1a;
 
-    /* UI Colors */
-    --white: #ffffff;
-    --gray-light: #f0f0f0;
-    --gray: #888888;
-    --gray-dark: #444444;
+    /* Theme Colors - Light Mode (default) */
+    --bg-primary: #f5f1eb;
+    --bg-secondary: #ffffff;
+    --text-primary: #2d2d2d;
+    --text-secondary: #444444;
+    --text-muted: #888888;
+    --card-bg: #ffffff;
+    --card-alt-bg: #f5f1eb;
+    --border-color: #e0e0e0;
+    --navbar-bg: #ffffff;
+    --navbar-text: #2d2d2d;
 
     /* Spacing */
     --space-xs: 0.5rem;
@@ -43,6 +49,25 @@
     --transition: 0.3s ease;
 }
 
+/* === Dark Mode === */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #2d2d2d;
+        --bg-secondary: #1a1a1a;
+        --text-primary: #f5f1eb;
+        --text-secondary: #c0c0c0;
+        --text-muted: #888888;
+        --card-bg: #3a3a3a;
+        --card-alt-bg: #2d2d2d;
+        --border-color: #4a4a4a;
+        --navbar-bg: #2d2d2d;
+        --navbar-text: #f5f1eb;
+        --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+        --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+        --shadow-lg: 0 10px 40px rgba(0,0,0,0.5);
+    }
+}
+
 /* === Reset === */
 *, *::before, *::after {
     margin: 0;
@@ -59,8 +84,8 @@ body {
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.6;
-    color: var(--charcoal);
-    background: var(--cream);
+    color: var(--text-primary);
+    background: var(--bg-primary);
 }
 
 h1, h2, h3, h4 {
@@ -113,10 +138,11 @@ section {
     top: 0;
     left: 0;
     right: 0;
-    background: var(--white);
+    background: var(--navbar-bg);
     padding: var(--space-sm) 0;
     box-shadow: var(--shadow-sm);
     z-index: 100;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .nav-wrapper {
@@ -129,13 +155,14 @@ section {
     display: flex;
     align-items: center;
     gap: var(--space-xs);
+    color: var(--navbar-text);
 }
 
 .logo-text {
     font-family: var(--font-logo);
     font-size: 1.125rem;
     font-weight: 700;
-    color: var(--charcoal);
+    color: var(--navbar-text);
 }
 
 .nav-menu {
@@ -146,7 +173,7 @@ section {
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--white);
+    background: var(--navbar-bg);
     padding: var(--space-sm);
     box-shadow: var(--shadow-md);
 }
@@ -158,9 +185,9 @@ section {
 .nav-link {
     display: block;
     padding: var(--space-sm);
-    color: var(--charcoal);
+    color: var(--navbar-text);
     font-weight: 500;
-    border-bottom: 1px solid var(--gray-light);
+    border-bottom: 1px solid var(--border-color);
     transition: color var(--transition);
 }
 
@@ -186,7 +213,7 @@ section {
     display: block;
     width: 24px;
     height: 2px;
-    background: var(--charcoal);
+    background: var(--navbar-text);
     transition: var(--transition);
 }
 
@@ -227,23 +254,23 @@ section {
 
 .btn-outline {
     background: transparent;
-    color: var(--charcoal);
-    border: 2px solid var(--charcoal);
+    color: var(--text-primary);
+    border: 2px solid var(--text-primary);
 }
 
 .btn-outline:hover {
-    background: var(--charcoal);
-    color: var(--white);
+    background: var(--text-primary);
+    color: var(--bg-primary);
 }
 
 /* === Hero Section === */
 .hero {
-    min-height: 100vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: calc(80px + var(--space-lg)) var(--space-sm) var(--space-lg);
+    padding: calc(80px + var(--space-md)) var(--space-sm) var(--space-md);
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('../../images/baker-exterior3.jpg');
     background-size: cover;
     background-position: center;
@@ -287,20 +314,20 @@ section {
 
 .section-header h2 {
     font-size: 2rem;
-    color: var(--charcoal);
+    color: var(--text-primary);
     margin-bottom: var(--space-sm);
 }
 
 .section-header p {
     font-size: 1.125rem;
-    color: var(--gray-dark);
+    color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto;
 }
 
 /* === How It Works === */
 .how-it-works {
-    background: var(--white);
+    background: var(--bg-secondary);
 }
 
 .steps-grid {
@@ -331,16 +358,16 @@ section {
 .step-card h3 {
     font-size: 1.25rem;
     margin-bottom: var(--space-xs);
-    color: var(--charcoal);
+    color: var(--text-primary);
 }
 
 .step-card p {
-    color: var(--gray-dark);
+    color: var(--text-secondary);
 }
 
 /* === Tiers Section === */
 .tiers {
-    background: var(--cream);
+    background: var(--bg-primary);
 }
 
 .tiers-grid {
@@ -349,12 +376,12 @@ section {
 }
 
 .tier-card {
-    background: var(--white);
+    background: var(--card-bg);
     border-radius: 16px;
     padding: var(--space-md);
     text-align: center;
     box-shadow: var(--shadow-sm);
-    border-top: 4px solid var(--gray);
+    border-top: 4px solid var(--text-muted);
     transition: all var(--transition);
 }
 
@@ -376,12 +403,12 @@ section {
 .tier-name {
     font-size: 1.5rem;
     margin-bottom: var(--space-xs);
-    color: var(--charcoal);
+    color: var(--text-primary);
 }
 
 .tier-tagline {
     font-size: 0.875rem;
-    color: var(--gray);
+    color: var(--text-muted);
     margin-bottom: var(--space-sm);
 }
 
@@ -398,15 +425,15 @@ section {
 
 .tier-credit-label {
     font-size: 0.875rem;
-    color: var(--gray);
+    color: var(--text-muted);
     margin-bottom: var(--space-sm);
 }
 
 .tier-qualify {
     font-size: 0.875rem;
-    color: var(--gray-dark);
+    color: var(--text-secondary);
     padding: var(--space-xs) var(--space-sm);
-    background: var(--gray-light);
+    background: var(--card-alt-bg);
     border-radius: 20px;
     display: inline-block;
 }
@@ -509,7 +536,7 @@ section {
 
 /* === Benefits Section === */
 .benefits {
-    background: var(--white);
+    background: var(--bg-secondary);
 }
 
 .benefits-grid {
@@ -519,7 +546,7 @@ section {
 
 .benefit-card {
     padding: var(--space-md);
-    background: var(--cream);
+    background: var(--card-alt-bg);
     border-radius: 12px;
     transition: all var(--transition);
 }
@@ -538,12 +565,12 @@ section {
 .benefit-card h3 {
     font-size: 1.125rem;
     margin-bottom: var(--space-xs);
-    color: var(--charcoal);
+    color: var(--text-primary);
 }
 
 .benefit-card p {
     font-size: 0.9375rem;
-    color: var(--gray-dark);
+    color: var(--text-secondary);
 }
 
 /* === CTA Section === */
@@ -645,7 +672,7 @@ section {
         flex-direction: row;
         gap: var(--space-md);
         position: static;
-        background: none;
+        background: transparent;
         padding: 0;
         box-shadow: none;
     }
