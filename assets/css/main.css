@@ -24,31 +24,19 @@
     --tier-pioneer: #FFD700;      /* Gold */
     --tier-trailblazer: #2C2C2C;  /* Platinum Black */
 
-    /* Light/Dark Mode Variables */
-    --bg-primary: #f5f1eb;
-    --bg-secondary: #ffffff;
-    --text-primary: #2d2d2d;
-    --text-secondary: #666666;
-    --text-heading: #2d2d2d;
-    --card-bg: #ffffff;
-    --border-color: #e0dcd6;
-    --shadow-light: rgba(0, 0, 0, 0.08);
-    --shadow-medium: rgba(0, 0, 0, 0.15);
-}
-
-/* Dark Mode (Default for this site) */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-primary: #2d2d2d;
-        --bg-secondary: #1a1a1a;
-        --text-primary: #f5f1eb;
-        --text-secondary: #b0b0b0;
-        --text-heading: #f4a855;
-        --card-bg: #3a3a3a;
-        --border-color: #4a4a4a;
-        --shadow-light: rgba(0, 0, 0, 0.3);
-        --shadow-medium: rgba(0, 0, 0, 0.5);
-    }
+    /* Light/Dark Mode Variables - Dark Mode Default */
+    --bg-primary: #2d2d2d;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #f5f1eb;
+    --text-secondary: #b0b0b0;
+    --text-heading: #f4a855;
+    --card-bg: #3a3a3a;
+    --border-color: #4a4a4a;
+    --shadow-light: rgba(0, 0, 0, 0.3);
+    --shadow-medium: rgba(0, 0, 0, 0.5);
+    --navbar-bg: #2d2d2d;
+    --navbar-text: #ffffff;
+    --navbar-border: rgba(255, 255, 255, 0.1);
 }
 
 /* Light Mode */
@@ -63,144 +51,17 @@
         --border-color: #e0dcd6;
         --shadow-light: rgba(0, 0, 0, 0.08);
         --shadow-medium: rgba(0, 0, 0, 0.15);
-    }
-
-    body {
-        background-color: var(--bg-primary);
-        color: var(--text-primary);
-    }
-
-    .navbar {
-        background: #ffffff;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    .navbar .logo a span {
-        color: var(--pathfinder-charcoal) !important;
-    }
-
-    .navbar svg rect {
-        stroke: var(--pathfinder-charcoal);
-    }
-
-    .navbar svg path {
-        stroke: var(--pathfinder-charcoal);
-    }
-
-    .nav-link {
-        color: var(--text-primary);
-    }
-
-    .nav-link:hover {
-        color: var(--pathfinder-warm);
-    }
-
-    .social-icon,
-    .social-icon i {
-        color: var(--text-primary);
-    }
-
-    .social-icon:hover,
-    .social-icon:hover i {
-        color: var(--pathfinder-warm);
-    }
-
-    .mobile-menu-toggle span {
-        background: var(--text-primary);
-    }
-
-    .section-header h2 {
-        color: var(--text-heading);
-    }
-
-    .section-header p {
-        color: var(--text-secondary);
-    }
-
-    .benefit-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        box-shadow: 0 4px 20px var(--shadow-light);
-    }
-
-    .benefit-card h3 {
-        color: var(--text-heading);
-    }
-
-    .benefit-card p {
-        color: var(--text-secondary);
-    }
-
-    .tier-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-    }
-
-    .tier-name {
-        color: var(--pathfinder-warm);
-    }
-
-    .tier-tagline,
-    .tier-price-detail {
-        color: var(--text-secondary);
-    }
-
-    .tier-features li {
-        color: var(--text-primary);
-        border-bottom-color: var(--border-color);
-    }
-
-    .location-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-    }
-
-    .location-card h3 {
-        color: var(--text-heading);
-    }
-
-    .location-card p {
-        color: var(--text-secondary);
-    }
-
-    .step-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-    }
-
-    .step-card h3 {
-        color: var(--text-heading);
-    }
-
-    .step-card p {
-        color: var(--text-secondary);
-    }
-
-    .calc-result-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-    }
-
-    .calc-tier-name {
-        color: var(--pathfinder-warm);
-    }
-
-    .calc-tier-qualification,
-    .calc-metric-label,
-    .calc-credit-breakdown {
-        color: var(--text-secondary);
-    }
-
-    .footer {
-        background: #2d2d2d;
+        --navbar-bg: #ffffff;
+        --navbar-text: #2d2d2d;
+        --navbar-border: #e0dcd6;
     }
 }
 
 body {
     font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    color: var(--coastal-cream);
-    background-color: var(--ocean-deep);
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
     overflow-x: hidden;
 }
 
@@ -228,15 +89,15 @@ body {
 
 /* Branded Navigation */
 .navbar {
-    background: var(--mountain-charcoal);
+    background: var(--navbar-bg);
     padding: 1rem 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px var(--shadow-light);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--navbar-border);
 }
 
 .navbar .container {
@@ -251,8 +112,16 @@ body {
 
 .logo h2 {
     font-size: 1.5rem;
-    color: var(--coastal-cream);
+    color: var(--navbar-text);
     margin: 0;
+}
+
+.logo-link {
+    color: var(--navbar-text);
+}
+
+.logo-link:hover {
+    color: var(--navbar-text);
 }
 
 .nav-menu {
@@ -262,14 +131,14 @@ body {
 }
 
 .nav-link {
-    color: var(--coastal-cream);
+    color: var(--navbar-text);
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-    color: var(--sunset-coral);
+    color: var(--pathfinder-warm);
 }
 
 .nav-actions {
@@ -285,7 +154,7 @@ body {
 }
 
 .social-icon {
-    color: var(--coastal-cream);
+    color: var(--navbar-text);
     font-size: 1.5rem;
     transition: color 0.3s ease, transform 0.3s ease;
     display: flex;
@@ -297,17 +166,17 @@ body {
 }
 
 .social-icon:hover {
-    color: var(--sunset-coral);
+    color: var(--pathfinder-warm);
     transform: translateY(-2px);
     text-decoration: none;
 }
 
 .social-icon i {
-    color: var(--coastal-cream);
+    color: var(--navbar-text);
 }
 
 .social-icon:hover i {
-    color: var(--sunset-coral);
+    color: var(--pathfinder-warm);
 }
 
 .mobile-menu-toggle {
@@ -320,7 +189,7 @@ body {
 .mobile-menu-toggle span {
     width: 25px;
     height: 3px;
-    background: var(--coastal-cream);
+    background: var(--navbar-text);
     border-radius: 2px;
     transition: 0.3s;
 }
@@ -757,12 +626,12 @@ section {
     font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 1rem;
-    color: var(--golden-highway);
+    color: var(--text-heading);
 }
 
 .section-header p {
     font-size: 1.2rem;
-    color: var(--fog-gray);
+    color: var(--text-secondary);
     max-width: 800px;
     margin: 0 auto;
 }
@@ -1111,10 +980,10 @@ section {
 }
 
 .tier-card {
-    background: var(--mountain-charcoal);
+    background: var(--card-bg);
     border-radius: 16px;
     padding: 3rem 2rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px var(--shadow-light);
     transition: all 0.3s;
     position: relative;
     border: 3px solid transparent;
@@ -1260,13 +1129,13 @@ section {
 .tier-name {
     font-size: 2rem;
     font-weight: 800;
-    color: var(--golden-highway);
+    color: var(--pathfinder-warm);
     margin-bottom: 0.5rem;
 }
 
 .tier-tagline {
     font-size: 1rem;
-    color: var(--fog-gray);
+    color: var(--text-secondary);
     margin-bottom: 2rem;
     font-style: italic;
 }
@@ -1280,7 +1149,7 @@ section {
 
 .tier-price-detail {
     font-size: 0.9rem;
-    color: var(--fog-gray);
+    color: var(--text-secondary);
     margin-bottom: 2rem;
 }
 
@@ -1293,11 +1162,11 @@ section {
 
 .tier-features li {
     padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(245, 222, 179, 0.1);
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     align-items: start;
     gap: 0.75rem;
-    color: var(--coastal-cream);
+    color: var(--text-primary);
 }
 
 .tier-features li:last-child {
@@ -1480,16 +1349,17 @@ section {
 }
 
 .benefit-card {
-    background: var(--ocean-deep);
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: 12px;
     transition: all 0.3s;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 20px var(--shadow-light);
+    border: 1px solid var(--border-color);
 }
 
 .benefit-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px var(--shadow-medium);
 }
 
 .benefit-icon {
@@ -1507,16 +1377,16 @@ section {
 .benefit-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--golden-highway);
+    color: var(--text-heading);
 }
 
 .benefit-card p {
-    color: var(--coastal-cream);
+    color: var(--text-secondary);
 }
 
 /* Locations Section */
 .locations {
-    background: var(--ocean-deep);
+    background: var(--bg-secondary);
 }
 
 .locations-grid {
@@ -1528,16 +1398,17 @@ section {
 }
 
 .location-card {
-    background: var(--mountain-charcoal);
+    background: var(--card-bg);
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px var(--shadow-light);
     transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
 .location-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 50px var(--shadow-medium);
 }
 
 .location-image-wrapper {
@@ -1567,12 +1438,12 @@ section {
 .location-card h3 {
     font-size: 1.8rem;
     font-weight: 800;
-    color: var(--golden-highway);
+    color: var(--text-heading);
     margin: 2rem 2rem 1rem;
 }
 
 .location-card p {
-    color: var(--coastal-cream);
+    color: var(--text-secondary);
     line-height: 1.8;
     padding: 0 2rem 2rem;
 }
@@ -1580,7 +1451,7 @@ section {
 /* CTA Section */
 .cta-section {
     padding: 6rem 2rem;
-    background: linear-gradient(135deg, var(--mountain-charcoal) 0%, var(--ocean-deep) 100%);
+    background: var(--pathfinder-charcoal);
     text-align: center;
 }
 
@@ -1588,13 +1459,13 @@ section {
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 1.5rem;
-    color: var(--golden-highway);
+    color: var(--pathfinder-warm);
 }
 
 .cta-section p {
     font-size: 1.3rem;
     margin-bottom: 3rem;
-    color: var(--coastal-cream);
+    color: var(--pathfinder-cream);
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
@@ -1603,7 +1474,7 @@ section {
 .cta-section .info-text {
     font-size: 1rem;
     margin-top: 2rem;
-    color: var(--fog-gray);
+    color: var(--text-secondary);
 }
 
 /* Footer - Branded Design */

@@ -100,23 +100,23 @@
     <div class="container">
         <div class="nav-wrapper">
             <div class="logo">
-                <a href="{{ '/' | relative_url }}" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-                    <!-- Pathfinder Mark - White version for dark navbar -->
+                <a href="{{ '/' | relative_url }}" class="logo-link" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--navbar-text);">
+                    <!-- Pathfinder Mark - uses currentColor for theme support -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 60 60">
                         <!-- Rounded badge outline -->
                         <rect x="8" y="8" width="44" height="44" rx="10" ry="10"
-                              stroke="#ffffff" stroke-width="4" fill="none"/>
+                              stroke="currentColor" stroke-width="4" fill="none"/>
                         <!-- Cardinal points (strong) -->
                         <path d="M30 14 L30 23 M30 37 L30 46 M14 30 L23 30 M37 30 L46 30"
-                              stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+                              stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
                         <!-- Intercardinal points (subtle) -->
                         <path d="M18 18 L22 22 M38 38 L42 42 M42 18 L38 22 M22 38 L18 42"
-                              stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-                        <!-- Warm center dot -->
+                              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+                        <!-- Warm center dot - always brand color -->
                         <circle cx="30" cy="30" r="7" fill="#f4a855"/>
                     </svg>
                     <!-- Pathfinder Wordmark - Raleway Bold -->
-                    <span style="font-family: 'Raleway', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; color: #ffffff;">Pathfinder Rewards</span>
+                    <span style="font-family: 'Raleway', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.01em;">Pathfinder Rewards</span>
                 </a>
             </div>
             <div class="nav-menu" id="navMenu">
