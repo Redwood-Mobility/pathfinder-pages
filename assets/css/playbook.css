@@ -10,6 +10,26 @@
     --light-gray: #F8F8F8;
 }
 
+/* Playbook navbar - always dark background */
+.navbar {
+    background: var(--mountain-charcoal);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar .logo-link,
+.navbar .logo-text,
+.navbar .nav-link {
+    color: var(--coastal-cream);
+}
+
+.navbar .nav-link:hover {
+    color: var(--sunset-coral);
+}
+
+.navbar .mobile-toggle span {
+    background: var(--coastal-cream);
+}
+
 /* Header */
 header {
     background: linear-gradient(135deg, var(--mountain-charcoal) 0%, var(--ocean-deep) 100%);
