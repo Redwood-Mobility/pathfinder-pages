@@ -2,31 +2,25 @@
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
-            <!-- Brand Logo -->
+            <!-- Pathfinder Brand Logo -->
             <div class="footer-section">
                 <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;">
-                    <!-- Full Color Logo -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 34 34">
-                        <defs>
-                            <linearGradient id="footerLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#F09060"/>
-                                <stop offset="100%" stop-color="#FFB366"/>
-                            </linearGradient>
-                            <clipPath id="footerLogoRounded">
-                                <rect width="34" height="34" rx="10" ry="10" />
-                            </clipPath>
-                        </defs>
-                        <rect width="34" height="34" rx="10" ry="10" fill="url(#footerLogoGrad)" />
-                        <g clip-path="url(#footerLogoRounded)">
-                            <path d="M 0 26 L 8 18 L 15 24 L 22 17 L 34 26 L 34 34 L 0 34 Z" fill="#2f2f2f" />
-                        </g>
-                        <circle cx="25" cy="7" r="4" fill="white" fill-opacity="0.6" />
+                    <!-- Pathfinder Mark - White version -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 60 60">
+                        <rect x="8" y="8" width="44" height="44" rx="10" ry="10"
+                              stroke="#ffffff" stroke-width="4" fill="none"/>
+                        <path d="M30 14 L30 23 M30 37 L30 46 M14 30 L23 30 M37 30 L46 30"
+                              stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+                        <path d="M18 18 L22 22 M38 38 L42 42 M42 18 L38 22 M22 38 L18 42"
+                              stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+                        <circle cx="30" cy="30" r="7" fill="#f4a855"/>
                     </svg>
-                    <span style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 0.08em; color: white;">RANGEWAY</span>
+                    <span style="font-family: 'Raleway', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; color: white;">Pathfinder Rewards</span>
                 </div>
-                <a href="{{ '/' | relative_url }}">Pathfinder Rewards</a>
+                <a href="{{ '/' | relative_url }}">Home</a>
                 <a href="{{ '/playbook.html' | relative_url }}">Playbook</a>
-                <a href="https://rangewayev.com" target="_blank" rel="noopener noreferrer">Main Site</a>
+                <a href="{{ '/pathfinder-assets/pathfinder-brand-guidelines.html' | relative_url }}">Brand Guidelines</a>
+                <a href="https://rangewayev.com" target="_blank" rel="noopener noreferrer">Rangeway Main Site</a>
             </div>
 
             <!-- Resources -->

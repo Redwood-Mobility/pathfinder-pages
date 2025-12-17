@@ -5,12 +5,18 @@
 }
 
 :root {
+    /* Rangeway Brand Colors */
     --sunset-coral: #F09060;
     --golden-highway: #FFB366;
     --mountain-charcoal: #4A4A4A;
     --coastal-cream: #F5DEB3;
     --ocean-deep: #2C5F7C;
     --fog-gray: #B8B8B8;
+
+    /* Pathfinder Brand Colors */
+    --pathfinder-charcoal: #2d2d2d;
+    --pathfinder-warm: #f4a855;
+    --pathfinder-cream: #f5f1eb;
 
     /* Tier Colors */
     --tier-explorer: #B87333;     /* Bronze */

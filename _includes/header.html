@@ -64,10 +64,15 @@
     }
     </script>
 
-    <!-- Fonts - Brand Guidelines: Montserrat for headlines, Source Sans Pro for body -->
+    <!-- Fonts - Brand Guidelines: Montserrat for headlines, Source Sans Pro for body, Raleway for Pathfinder wordmark -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Pathfinder Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ '/pathfinder-assets/pathfinder-mark-favicon-dark-32.png' | relative_url }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ '/pathfinder-assets/pathfinder-mark-favicon-dark-16.png' | relative_url }}">
+    <link rel="apple-touch-icon" sizes="128x128" href="{{ '/pathfinder-assets/pathfinder-mark-dark-128.png' | relative_url }}">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -96,25 +101,22 @@
         <div class="nav-wrapper">
             <div class="logo">
                 <a href="{{ '/' | relative_url }}" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-                    <!-- Brand Logo - Full Color Version -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 34 34">
-                        <defs>
-                            <linearGradient id="navLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#F09060"/>
-                                <stop offset="100%" stop-color="#FFB366"/>
-                            </linearGradient>
-                            <clipPath id="navLogoRounded">
-                                <rect width="34" height="34" rx="10" ry="10" />
-                            </clipPath>
-                        </defs>
-                        <rect width="34" height="34" rx="10" ry="10" fill="url(#navLogoGrad)" />
-                        <g clip-path="url(#navLogoRounded)">
-                            <path d="M 0 26 L 8 18 L 15 24 L 22 17 L 34 26 L 34 34 L 0 34 Z" fill="#2f2f2f" />
-                        </g>
-                        <circle cx="25" cy="7" r="4" fill="white" fill-opacity="0.6" />
+                    <!-- Pathfinder Mark - White version for dark navbar -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 60 60">
+                        <!-- Rounded badge outline -->
+                        <rect x="8" y="8" width="44" height="44" rx="10" ry="10"
+                              stroke="#ffffff" stroke-width="4" fill="none"/>
+                        <!-- Cardinal points (strong) -->
+                        <path d="M30 14 L30 23 M30 37 L30 46 M14 30 L23 30 M37 30 L46 30"
+                              stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+                        <!-- Intercardinal points (subtle) -->
+                        <path d="M18 18 L22 22 M38 38 L42 42 M42 18 L38 22 M22 38 L18 42"
+                              stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+                        <!-- Warm center dot -->
+                        <circle cx="30" cy="30" r="7" fill="#f4a855"/>
                     </svg>
-                    <!-- Brand Wordmark - Montserrat Bold, All Caps, Generous Tracking -->
-                    <span style="font-family: 'Montserrat', -apple-system, sans-serif; font-size: 20px; font-weight: 800; letter-spacing: 0.08em; color: #F5DEB3;">RANGEWAY</span>
+                    <!-- Pathfinder Wordmark - Raleway Bold -->
+                    <span style="font-family: 'Raleway', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; color: #ffffff;">Pathfinder Rewards</span>
                 </a>
             </div>
             <div class="nav-menu" id="navMenu">
