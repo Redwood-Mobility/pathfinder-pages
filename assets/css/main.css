@@ -437,17 +437,17 @@ section {
     list-style: none;
     text-align: left;
     margin: var(--space-sm) 0;
-    padding: 0;
+    padding: 0 var(--space-xs);
 }
 
 .tier-benefits li {
     padding: var(--space-xs) 0;
+    padding-left: 1.5rem;
+    position: relative;
     font-size: 0.9rem;
+    line-height: 1.4;
     color: var(--text-secondary);
     border-bottom: 1px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
 }
 
 .tier-benefits li:last-child {
@@ -456,9 +456,10 @@ section {
 
 .tier-benefits li::before {
     content: '✓';
+    position: absolute;
+    left: 0;
     color: var(--warm);
     font-weight: bold;
-    flex-shrink: 0;
 }
 
 .tier-qualify {
