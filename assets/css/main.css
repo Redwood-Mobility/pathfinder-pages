@@ -385,6 +385,8 @@ section {
     box-shadow: var(--shadow-sm);
     border-top: 4px solid var(--text-muted);
     transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
 }
 
 .tier-card:hover {
@@ -431,6 +433,34 @@ section {
     margin-bottom: var(--space-sm);
 }
 
+.tier-benefits {
+    list-style: none;
+    text-align: left;
+    margin: var(--space-sm) 0;
+    padding: 0;
+}
+
+.tier-benefits li {
+    padding: var(--space-xs) 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.tier-benefits li:last-child {
+    border-bottom: none;
+}
+
+.tier-benefits li::before {
+    content: '✓';
+    color: var(--warm);
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
 .tier-qualify {
     font-size: 0.875rem;
     color: var(--text-secondary);
@@ -438,6 +468,7 @@ section {
     background: var(--card-alt-bg);
     border-radius: 20px;
     display: inline-block;
+    margin-top: auto;
 }
 
 /* === Partners Section === */
