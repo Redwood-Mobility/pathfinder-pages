@@ -47,3 +47,6 @@
 </footer>
 
 <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+{% if page.script %}
+<script src="{{ '/assets/js/' | append: page.script | append: '.js' | relative_url }}"></script>
+{% endif %}

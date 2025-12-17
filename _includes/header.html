@@ -39,6 +39,9 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    {% if page.stylesheet %}
+    <link rel="stylesheet" href="{{ '/assets/css/' | append: page.stylesheet | append: '.css' | relative_url }}">
+    {% endif %}
 </head>
 
 <!-- Skip Link -->
