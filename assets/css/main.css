@@ -81,17 +81,21 @@
 
     /* Ensure header text is dark enough in light mode */
     .logo-link,
-    .logo-link span {
+    .logo-link .logo-text {
         color: #2d2d2d !important;
     }
 
     .nav-link {
-        color: #2d2d2d;
+        color: #2d2d2d !important;
     }
 
     .social-icon,
     .social-icon i {
-        color: #2d2d2d;
+        color: #2d2d2d !important;
+    }
+
+    .mobile-menu-toggle span {
+        background: #2d2d2d !important;
     }
 }
 
@@ -155,11 +159,24 @@ body {
 }
 
 .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
     color: var(--navbar-text);
 }
 
 .logo-link:hover {
     color: var(--navbar-text);
+    text-decoration: none;
+}
+
+.logo-text {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: inherit;
 }
 
 .nav-menu {
@@ -235,15 +252,16 @@ body {
 /* Mobile Menu Dropdown - Hidden by default */
 @media (max-width: 768px) {
     .nav-menu {
+        display: none;
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
-        background: var(--mountain-charcoal);
+        background: var(--navbar-bg);
         flex-direction: column;
         padding: 1rem;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 10px var(--shadow-medium);
+        border-top: 1px solid var(--navbar-border);
     }
 
     .nav-menu.active {
@@ -252,7 +270,7 @@ body {
 
     .nav-link {
         padding: 0.75rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid var(--border-color);
     }
 
     .nav-link:last-child {
@@ -612,7 +630,7 @@ section {
 
 /* Statistics Section */
 .stats-section {
-    background: linear-gradient(135deg, var(--mountain-charcoal), var(--ocean-deep));
+    background: var(--bg-secondary);
     padding: 5rem 2rem;
 }
 
@@ -627,9 +645,9 @@ section {
 .stat-card {
     text-align: center;
     padding: 3rem 2rem;
-    background: rgba(44, 95, 124, 0.3);
+    background: var(--card-bg);
     border-radius: 16px;
-    border: 2px solid rgba(255, 179, 102, 0.2);
+    border: 1px solid var(--border-color);
     transition: all 0.3s ease;
 }
 
@@ -642,15 +660,14 @@ section {
 .stat-number {
     font-size: 4.5rem;
     font-weight: 900;
-    color: var(--sunset-coral);
+    color: var(--pathfinder-warm);
     line-height: 1;
     margin-bottom: 1rem;
-    text-shadow: 0 2px 10px rgba(240, 144, 96, 0.4);
 }
 
 .stat-label {
     font-size: 1.1rem;
-    color: var(--coastal-cream);
+    color: var(--text-primary);
     font-weight: 600;
     line-height: 1.4;
 }
@@ -676,7 +693,7 @@ section {
 
 /* Calculator Section */
 .calculator-section {
-    background: var(--mountain-charcoal);
+    background: var(--bg-primary);
 }
 
 .calculator-container {
@@ -923,7 +940,7 @@ section {
 
 /* Tiers Section */
 .tiers {
-    background: var(--ocean-deep);
+    background: var(--bg-primary);
 }
 
 /* First section on standalone pages needs top margin for fixed navbar */
@@ -1335,7 +1352,7 @@ section {
 
 /* Benefits Section */
 .benefits {
-    background: var(--mountain-charcoal);
+    background: var(--bg-primary);
 }
 
 /* Interior Lounge Hero */
@@ -1520,6 +1537,27 @@ section {
     padding: 60px 0 30px;
     background: #2d2d2d;
     color: white;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+
+.footer-logo-text {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: white;
+}
+
+.footer-address {
+    color: #f5f1eb;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
 }
 
 .footer-grid {

@@ -4,7 +4,7 @@
         <div class="footer-grid">
             <!-- Pathfinder Brand Logo -->
             <div class="footer-section">
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;">
+                <div class="footer-logo">
                     <!-- Pathfinder Mark - White version -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 60 60">
                         <rect x="8" y="8" width="44" height="44" rx="10" ry="10"
@@ -15,7 +15,7 @@
                               stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
                         <circle cx="30" cy="30" r="7" fill="#f4a855"/>
                     </svg>
-                    <span style="font-family: 'Raleway', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; color: white;">Pathfinder Rewards</span>
+                    <span class="footer-logo-text">Pathfinder Rewards</span>
                 </div>
                 <a href="{{ '/' | relative_url }}">Home</a>
                 <a href="{{ '/playbook.html' | relative_url }}">Playbook</a>
@@ -35,13 +35,13 @@
             <!-- Contact -->
             <div class="footer-section">
                 <h4>Contact</h4>
-                <p style="color: var(--coastal-cream); line-height: 1.6; margin-bottom: 0.5rem; white-space: nowrap;">
+                <p class="footer-address">
                     {{ site.organization.address.street }}<br>
-                    <span style="white-space: normal;">{{ site.organization.address.city }}, {{ site.organization.address.state }} {{ site.organization.address.zip }}</span>
+                    {{ site.organization.address.city }}, {{ site.organization.address.state }} {{ site.organization.address.zip }}
                 </p>
                 <a href="tel:{{ site.organization.phone }}">{{ site.organization.phone }}</a>
                 <a href="mailto:{{ site.organization.email }}">{{ site.organization.email }}</a>
-                <div class="footer-social-icons" style="margin-top: 1rem;">
+                <div class="footer-social-icons">
                     <a href="{{ site.social.twitter }}" target="_blank" rel="noopener noreferrer" aria-label="Follow us on X (Twitter)">
                         <i class="fa-brands fa-x-twitter"></i>
                     </a>
