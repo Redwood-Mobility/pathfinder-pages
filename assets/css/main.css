@@ -179,10 +179,16 @@ body {
     color: inherit;
 }
 
+/* Desktop: nav-menu visible */
 .nav-menu {
-    display: flex;
+    display: flex !important;
     gap: 2rem;
     align-items: center;
+}
+
+/* Desktop: hide hamburger */
+.mobile-menu-toggle {
+    display: none !important;
 }
 
 .nav-link {
@@ -249,10 +255,10 @@ body {
     transition: 0.3s;
 }
 
-/* Mobile Menu Dropdown - Hidden by default */
-@media (max-width: 768px) {
+/* Mobile Menu Dropdown - Hidden by default on mobile/tablet */
+@media (max-width: 1024px) {
     .nav-menu {
-        display: none;
+        display: none !important;
         position: absolute;
         top: 100%;
         left: 0;
@@ -262,10 +268,15 @@ body {
         padding: 1rem;
         box-shadow: 0 4px 10px var(--shadow-medium);
         border-top: 1px solid var(--navbar-border);
+        z-index: 1000;
     }
 
     .nav-menu.active {
-        display: flex;
+        display: flex !important;
+    }
+
+    .mobile-menu-toggle {
+        display: flex !important;
     }
 
     .nav-link {
@@ -1641,21 +1652,8 @@ footer {
     margin-bottom: 2rem;
 }
 
-/* Responsive */
+/* Responsive - Mobile specific adjustments */
 @media (max-width: 768px) {
-    /* Branded Navigation Mobile - nav-menu hidden by default, shown when .active */
-    .nav-menu {
-        display: none !important;
-    }
-
-    .nav-menu.active {
-        display: flex !important;
-    }
-
-    .mobile-menu-toggle {
-        display: flex;
-    }
-
     .nav-actions {
         gap: 0.5rem;
     }
@@ -1983,8 +1981,30 @@ footer {
     }
 }
 
-/* Tablet/Medium screens - 2 columns for tiers */
+/* Tablet/Medium screens - show hamburger menu and adjust layout */
 @media (min-width: 769px) and (max-width: 1024px) {
+    /* Show hamburger menu on tablets too */
+    .nav-menu {
+        display: none !important;
+    }
+
+    .nav-menu.active {
+        display: flex !important;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--navbar-bg);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 10px var(--shadow-medium);
+        border-top: 1px solid var(--navbar-border);
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
     .nav-container {
         padding: 1rem 1.5rem;
     }
@@ -2006,8 +2026,22 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    /* Keep 4 columns for tiers on tablets - they fit well */
     .tiers-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    .tier-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .tier-name {
+        font-size: 1.5rem;
+    }
+
+    .tier-price {
+        font-size: 2rem;
     }
 
     .locations-grid {
