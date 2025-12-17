@@ -55,6 +55,44 @@
         --navbar-text: #2d2d2d;
         --navbar-border: #e0dcd6;
     }
+
+    /* Tier cards have dark background images - keep text light */
+    .tier-card {
+        color: #f5f1eb;
+    }
+
+    .tier-card .tier-name {
+        color: #f4a855;
+    }
+
+    .tier-card .tier-tagline,
+    .tier-card .tier-price-detail {
+        color: #b0b0b0;
+    }
+
+    .tier-card .tier-features li {
+        color: #f5f1eb;
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .tier-card .tier-price {
+        color: #f4a855;
+    }
+
+    /* Ensure header text is dark enough in light mode */
+    .logo-link,
+    .logo-link span {
+        color: #2d2d2d !important;
+    }
+
+    .nav-link {
+        color: #2d2d2d;
+    }
+
+    .social-icon,
+    .social-icon i {
+        color: #2d2d2d;
+    }
 }
 
 body {
