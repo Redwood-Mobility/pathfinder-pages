@@ -1,1287 +1,214 @@
 ---
 layout: default
-title: "Pathfinder Rewards"
-description: "Earn your status while exploring America's scenic highways. Join Rangeway's hospitality-inspired loyalty program with earned tiers, credits back, and exclusive experiences."
-keywords: "Pathfinder Rewards, Rangeway loyalty program, EV charging rewards, travel rewards, earned status tiers"
-og_image: "/images/baker-exterior3.jpg"
-stylesheet: main
+title: "Pathfinder Rewards | Earn Rewards Everywhere You Charge"
+description: "Pathfinder Rewards is a loyalty program for EV drivers. Earn credits at participating charging locations nationwide. Open to all EV drivers."
 ---
 
-<style>
-/* Pathfinder-specific styles */
-.pathfinder-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{ "/images/baker-exterior3.jpg" | relative_url }}');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  padding: 6rem 2rem;
-  text-align: center;
-}
-
-.pathfinder-hero .hero-content {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.pathfinder-hero h1 {
-  color: white;
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  margin-bottom: 1.5rem;
-}
-
-.pathfinder-hero h1 .highlight {
-  color: var(--sunset-coral);
-}
-
-.pathfinder-hero p {
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 1.3rem;
-  margin-bottom: 2.5rem;
-}
-
-.hero-badge {
-  display: inline-block;
-  background: rgba(255, 179, 102, 0.2);
-  border: 2px solid var(--golden-highway);
-  padding: 0.5rem 1.5rem;
-  border-radius: 50px;
-  font-weight: 600;
-  color: var(--golden-highway);
-  margin-bottom: 2rem;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.hero-buttons .btn {
-  text-align: center;
-  justify-content: center;
-}
-
-.hero-buttons .btn-secondary {
-  background: var(--golden-highway);
-  color: var(--mountain-charcoal);
-  border-color: var(--golden-highway);
-}
-
-.hero-buttons .btn-secondary:hover {
-  background: #e6a35c;
-  color: var(--mountain-charcoal);
-  border-color: #e6a35c;
-}
-
-/* Stats Section */
-.stats-section {
-  background: linear-gradient(135deg, var(--mountain-charcoal), var(--ocean-deep));
-  padding: 5rem 2rem;
-}
-
-.stats-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-}
-
-.stat-card {
-  text-align: center;
-  padding: 2.5rem 1.5rem;
-  background: rgba(44, 95, 124, 0.3);
-  border-radius: 16px;
-  border: 2px solid rgba(255, 179, 102, 0.2);
-  transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--sunset-coral);
-  box-shadow: 0 12px 35px rgba(240, 144, 96, 0.3);
-}
-
-.stat-number {
-  font-size: 3.5rem;
-  font-weight: 900;
-  color: var(--sunset-coral);
-  line-height: 1;
-  margin-bottom: 0.75rem;
-}
-
-.stat-label {
-  font-size: 1rem;
-  color: var(--coastal-cream);
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-/* Tiers Section */
-.tiers-section {
-  background: var(--bg-secondary);
-  padding: 5rem 2rem;
-}
-
-.tiers-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.tier-card {
-  background: var(--mountain-charcoal);
-  border-radius: 16px;
-  padding: 2.5rem 2rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  transition: all 0.3s;
-  position: relative;
-  border: 3px solid transparent;
-  display: flex;
-  flex-direction: column;
-  color: var(--coastal-cream);
-}
-
-.tier-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-}
-
-.tier-card:nth-child(1) { border-color: #B87333; }
-.tier-card:nth-child(2) { border-color: #C0C0C0; }
-.tier-card:nth-child(3) { border-color: #FFD700; }
-.tier-card:nth-child(4) { border-color: #2C2C2C; }
-
-.tier-card.invite-only::before {
-  content: 'INVITE ONLY';
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #2C2C2C;
-  color: var(--golden-highway);
-  padding: 0.4rem 1rem;
-  border-radius: 15px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  border: 2px solid var(--golden-highway);
-}
-
-.tier-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-.tier-name {
-  font-size: 1.75rem;
-  font-weight: 800;
-  color: var(--golden-highway);
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
-.tier-tagline {
-  font-size: 0.95rem;
-  color: var(--fog-gray);
-  margin-bottom: 1.5rem;
-  font-style: italic;
-  text-align: center;
-}
-
-.tier-price {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--sunset-coral);
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
-.tier-price-detail {
-  font-size: 0.85rem;
-  color: var(--fog-gray);
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.tier-features {
-  list-style: none;
-  margin-bottom: 2rem;
-  text-align: left;
-  flex-grow: 1;
-  padding: 0;
-}
-
-.tier-features li {
-  padding: 0.6rem 0;
-  border-bottom: 1px solid rgba(245, 222, 179, 0.1);
-  display: flex;
-  align-items: start;
-  gap: 0.75rem;
-  font-size: 0.95rem;
-}
-
-.tier-features li:last-child {
-  border-bottom: none;
-}
-
-.tier-features li::before {
-  content: '\2713';
-  color: var(--sunset-coral);
-  font-weight: bold;
-  flex-shrink: 0;
-}
-
-.tier-cta {
-  width: 100%;
-  padding: 1rem;
-  background: var(--sunset-coral);
-  color: var(--mountain-charcoal);
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-  display: block;
-  text-align: center;
-}
-
-.tier-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(240, 144, 96, 0.3);
-  color: var(--mountain-charcoal);
-}
-
-/* Benefits Section */
-.benefits-section {
-  background: var(--bg-primary);
-  padding: 5rem 2rem;
-}
-
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.benefit-card {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 16px;
-  transition: all 0.3s;
-  box-shadow: 0 4px 20px var(--shadow-light);
-  border: 1px solid var(--border-color);
-}
-
-.benefit-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px var(--shadow-medium);
-}
-
-.benefit-icon {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, var(--sunset-coral), var(--golden-highway));
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.benefit-card h3 {
-  font-size: 1.35rem;
-  margin-bottom: 1rem;
-  color: var(--text-heading);
-}
-
-.benefit-card p {
-  color: var(--text-secondary);
-  font-size: 1rem;
-  margin-bottom: 0;
-}
-
-/* Locations Section */
-.locations-section {
-  background: var(--bg-secondary);
-  padding: 5rem 2rem;
-}
-
-.locations-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.location-card {
-  background: var(--card-bg);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px var(--shadow-light);
-  transition: all 0.3s ease;
-  border: 1px solid var(--border-color);
-}
-
-.location-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px var(--shadow-medium);
-}
-
-.location-image-wrapper {
-  width: 100%;
-  height: 220px;
-  overflow: hidden;
-}
-
-.location-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.location-card:hover .location-image {
-  transform: scale(1.05);
-}
-
-.location-card h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-heading);
-  margin: 1.5rem 1.5rem 0.75rem;
-}
-
-.location-card p {
-  color: var(--text-secondary);
-  line-height: 1.7;
-  padding: 0 1.5rem 1.5rem;
-  font-size: 1rem;
-  margin-bottom: 0;
-}
-
-/* Calculator Section */
-.calculator-section {
-  background: var(--bg-primary);
-  padding: 5rem 2rem;
-}
-
-.calculator-container {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.calculator-input-card {
-  background: linear-gradient(135deg, var(--ocean-deep), #1a3d50);
-  padding: 3rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  margin-bottom: 2rem;
-}
-
-.calculator-input-card h3 {
-  font-size: 1.5rem;
-  color: var(--golden-highway);
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.slider-container {
-  margin-bottom: 1.5rem;
-}
-
-.slider-container label {
-  display: block;
-  text-align: center;
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  color: var(--coastal-cream);
-}
-
-#session-count {
-  color: var(--sunset-coral);
-  font-weight: 800;
-  font-size: 1.4rem;
-}
-
-.slider {
-  width: 100%;
-  height: 8px;
-  border-radius: 5px;
-  background: linear-gradient(to right, var(--sunset-coral), var(--golden-highway));
-  outline: none;
-  -webkit-appearance: none;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: white;
-  cursor: pointer;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-
-.slider::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: white;
-  cursor: pointer;
-  border: none;
-}
-
-.slider-labels {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 0.5rem;
-  color: var(--fog-gray);
-  font-size: 0.85rem;
-}
-
-.calculator-note {
-  text-align: center;
-  color: var(--fog-gray);
-  font-size: 0.9rem;
-  margin-top: 1rem;
-}
-
-.calculator-results {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-}
-
-.calc-result-card {
-  background: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px var(--shadow-light);
-  border: 2px solid transparent;
-  transition: all 0.3s;
-  text-align: center;
-}
-
-.calc-result-card.recommended {
-  border-color: var(--sunset-coral);
-  box-shadow: 0 8px 30px rgba(240, 144, 96, 0.2);
-}
-
-.calc-tier-name {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-heading);
-  margin-bottom: 0.25rem;
-}
-
-.calc-tier-qualification {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-bottom: 1rem;
-}
-
-.calc-metric-label {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  margin-bottom: 0.25rem;
-}
-
-.calc-metric-value {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--sunset-coral);
-}
-
-.calc-credit-breakdown {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  margin-top: 0.75rem;
-  line-height: 1.4;
-}
-
-/* How It Works Section */
-.how-it-works {
-  background: var(--bg-secondary);
-  padding: 5rem 2rem;
-}
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.step-card {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: 0 4px 20px var(--shadow-light);
-  border: 1px solid var(--border-color);
-}
-
-.step-number {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, var(--sunset-coral), var(--golden-highway));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  margin: 0 auto 1.5rem;
-}
-
-.step-card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  color: var(--text-heading);
-}
-
-.step-card p {
-  color: var(--text-secondary);
-  font-size: 1rem;
-  margin-bottom: 0;
-}
-
-/* Threshold Table */
-.threshold-table-wrapper {
-  max-width: 800px;
-  margin: 3rem auto 0;
-  background: var(--mountain-charcoal);
-  border-radius: 16px;
-  padding: 2rem;
-  overflow-x: auto;
-}
-
-.threshold-table {
-  width: 100%;
-  border-collapse: collapse;
-  color: var(--coastal-cream);
-}
-
-.threshold-table th {
-  text-align: left;
-  padding: 1rem;
-  color: var(--golden-highway);
-  border-bottom: 2px solid var(--sunset-coral);
-  font-weight: 700;
-}
-
-.threshold-table td {
-  padding: 1rem;
-  border-bottom: 1px solid rgba(245, 222, 179, 0.1);
-}
-
-.threshold-table td:nth-child(2),
-.threshold-table td:nth-child(3),
-.threshold-table td:nth-child(4),
-.threshold-table th:nth-child(2),
-.threshold-table th:nth-child(3),
-.threshold-table th:nth-child(4) {
-  text-align: center;
-}
-
-.threshold-table .credits-cell {
-  color: var(--sunset-coral);
-  font-weight: 700;
-}
-
-/* CTA Section */
-.pathfinder-cta {
-  background: linear-gradient(135deg, var(--mountain-charcoal) 0%, var(--ocean-deep) 100%);
-  padding: 5rem 2rem;
-  text-align: center;
-}
-
-.pathfinder-cta h2 {
-  font-size: 2.5rem;
-  color: var(--golden-highway);
-  margin-bottom: 1.5rem;
-}
-
-.pathfinder-cta p {
-  font-size: 1.2rem;
-  color: var(--coastal-cream);
-  max-width: 700px;
-  margin: 0 auto 2.5rem;
-}
-
-.pathfinder-cta .info-text {
-  font-size: 1rem;
-  color: var(--fog-gray);
-  margin-top: 2rem;
-}
-
-/* Back to main site link */
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--coastal-cream);
-  text-decoration: none;
-  font-weight: 600;
-  margin-top: 1.5rem;
-  transition: all 0.3s;
-}
-
-.back-link:hover {
-  color: var(--sunset-coral);
-}
-
-/* Dark Mode Fixes */
-@media (prefers-color-scheme: dark) {
-  .stat-label {
-    color: #e0e0e0;
-  }
-
-  .tier-card {
-    background: #2a2a2a;
-    color: #e0e0e0;
-  }
-
-  .tier-tagline,
-  .tier-price-detail {
-    color: #b0b0b0;
-  }
-
-  .tier-features li {
-    color: #e0e0e0;
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .slider-container label {
-    color: #e0e0e0;
-  }
-
-  .slider-labels,
-  .calculator-note {
-    color: #b0b0b0;
-  }
-
-  .threshold-table {
-    color: #e0e0e0;
-  }
-
-  .threshold-table td {
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .pathfinder-cta p {
-    color: #e0e0e0;
-  }
-
-  .pathfinder-cta .info-text {
-    color: #b0b0b0;
-  }
-
-  .back-link {
-    color: #e0e0e0;
-  }
-
-  .step-number {
-    color: #1a1a1a;
-  }
-}
-
-/* Also support explicit dark theme attribute */
-[data-theme="dark"] .stat-label,
-[data-theme="dark"] .tier-card,
-[data-theme="dark"] .tier-features li,
-[data-theme="dark"] .slider-container label,
-[data-theme="dark"] .threshold-table,
-[data-theme="dark"] .pathfinder-cta p,
-[data-theme="dark"] .back-link {
-  color: #e0e0e0;
-}
-
-[data-theme="dark"] .tier-tagline,
-[data-theme="dark"] .tier-price-detail,
-[data-theme="dark"] .slider-labels,
-[data-theme="dark"] .calculator-note,
-[data-theme="dark"] .pathfinder-cta .info-text {
-  color: #b0b0b0;
-}
-
-[data-theme="dark"] .tier-card {
-  background: #2a2a2a;
-}
-
-[data-theme="dark"] .tier-features li {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .threshold-table td {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="dark"] .step-number {
-  color: #1a1a1a;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .pathfinder-hero {
-    min-height: auto;
-    padding: 8rem 1.5rem 4rem;
-    background-attachment: scroll;
-  }
-
-  .pathfinder-hero h1 {
-    font-size: 2rem;
-  }
-
-  .pathfinder-hero p {
-    font-size: 1.1rem;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: center;
-  }
-
-  .hero-buttons .btn,
-  .hero-buttons .btn-large {
-    padding: 0.875rem 2rem;
-    font-size: 0.95rem;
-    text-align: center;
-    justify-content: center;
-    width: auto;
-    display: inline-flex;
-  }
-
-  .stats-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .stat-number {
-    font-size: 2.5rem;
-  }
-
-  .tiers-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .calculator-input-card {
-    padding: 2rem 1.5rem;
-  }
-
-  .threshold-table-wrapper {
-    padding: 1rem;
-    overflow-x: visible;
-  }
-
-  .threshold-table {
-    font-size: 0.85rem;
-  }
-
-  .threshold-table th,
-  .threshold-table td {
-    padding: 0.6rem 0.35rem;
-  }
-
-  .threshold-table th:first-child,
-  .threshold-table td:first-child {
-    padding-left: 0.5rem;
-  }
-
-  .threshold-table th:last-child,
-  .threshold-table td:last-child {
-    padding-right: 0.5rem;
-  }
-}
-</style>
-
-<!-- Hero Section -->
-<section class="pathfinder-hero">
-  <div class="hero-content">
-    <!-- Pathfinder Mark -->
-    <div class="hero-logo" style="margin-bottom: 2rem;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 60 60">
-        <rect x="8" y="8" width="44" height="44" rx="10" ry="10"
-              stroke="#ffffff" stroke-width="4" fill="none"/>
-        <path d="M30 14 L30 23 M30 37 L30 46 M14 30 L23 30 M37 30 L46 30"
-              stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
-        <path d="M18 18 L22 22 M38 38 L42 42 M42 18 L38 22 M22 38 L18 42"
-              stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-        <circle cx="30" cy="30" r="7" fill="#f4a855"/>
-      </svg>
-    </div>
-    <div class="hero-badge">Introducing Pathfinder Rewards</div>
-    <h1>Earn Your Status.<br><span class="highlight">Explore Your Way.</span></h1>
-    <p>Join the loyalty program built for America's scenic highways. Earn your tier through charging sessions, get credits back, and unlock exclusive experiences.</p>
-    <div class="hero-buttons">
-      <a href="#tiers" class="btn btn-primary btn-large">View Membership Tiers</a>
-      <a href="https://rangewayev.com" class="btn btn-secondary btn-large">Learn About Rangeway</a>
-    </div>
-  </div>
-</section>
-
-<!-- Statistics Section -->
-<section class="stats-section">
-  <div class="stats-container">
-    <div class="stat-card">
-      <div class="stat-number" data-target="200">200</div>
-      <div class="stat-label">Exclusive Trailblazer<br>Members (Invite Only)</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number" data-target="4">4</div>
-      <div class="stat-label">Earned Status<br>Tiers</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number" data-target="2026">2026</div>
-      <div class="stat-label">Launch<br>Year</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number" data-target="15">15%</div>
-      <div class="stat-label">Credits Back<br>(Trailblazer Tier)</div>
-    </div>
-  </div>
-</section>
-
-<!-- Benefits Overview Section -->
-<section class="benefits-section" id="benefits">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-badge">Member Benefits</span>
-      <h2>More Than Just Credits Back</h2>
-      <p>Pathfinder Rewards is a true hospitality loyalty program - like Marriott Bonvoy or Delta SkyMiles. Earn status through your loyalty, unlock experiences that go beyond transactions.</p>
-    </div>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon">&#9889;</div>
-        <h3>Earned Status Recognition</h3>
-        <p>Your status is displayed when you connect. Lounge displays welcome you by name. Staff knows your tier. You're recognized for your loyalty, not your payment.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">&#128176;</div>
-        <h3>Credits Back on Every Charge</h3>
-        <p>Voyager earns 5%, Pioneer earns 10%, Trailblazer earns 15% credits back. Plus annual milestone credits, birthday credits, and seasonal bonuses.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">&#127919;</div>
-        <h3>Exclusive Experiences</h3>
-        <p>Pioneer member events, Trailblazer Summit, Basecamp grand openings - status unlocks experiences money can't buy.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">&#11088;</div>
-        <h3>Status That Lasts</h3>
-        <p>Once earned, your status is valid through the end of the following calendar year. No monthly fees. No subscriptions. Just rewards for your loyalty.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">&#129309;</div>
-        <h3>Partner Perks Network</h3>
-        <p>10-15% off at partner hotels, private tour access at attractions, pro-deals on outdoor gear and EV accessories. Your status unlocks curated partnerships.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">&#128100;</div>
-        <h3>Concierge Relationship</h3>
-        <p>Trailblazers get a dedicated relationship manager who remembers your preferences, plans your trips, and handles issues proactively.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Tiers Section -->
-<section class="tiers-section" id="tiers">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-badge">Membership Tiers</span>
-      <h2>Earn Your Status</h2>
-      <p>From your first charge to invite-only elite status, every session moves you forward. The more you charge, the more you earn.</p>
-    </div>
-    <div class="tiers-grid">
-      <!-- Explorer Tier -->
-      <div class="tier-card">
-        <div class="tier-icon">&#128506;</div>
-        <div class="tier-name">Explorer</div>
-        <div class="tier-tagline">Your journey starts here</div>
-        <div class="tier-price">Free</div>
-        <div class="tier-price-detail">Automatic upon first charge</div>
-        <ul class="tier-features">
-          <li>Saved payment methods</li>
-          <li>Charging session history & receipts</li>
-          <li>Mobile app access</li>
-          <li>Carbon offset tracking</li>
-          <li>Explorer badge in app</li>
-        </ul>
-        <a href="https://fieldnotes.rangewayev.com" target="_blank" rel="noopener noreferrer" class="tier-cta">Get Started</a>
-      </div>
-
-      <!-- Voyager Tier -->
-      <div class="tier-card">
-        <div class="tier-icon">&#9968;</div>
-        <div class="tier-name">Voyager</div>
-        <div class="tier-tagline">For frequent chargers</div>
-        <div class="tier-price">Earned Status</div>
-        <div class="tier-price-detail">10-24 sessions/year OR 3,000+ kWh</div>
-        <ul class="tier-features">
-          <li>5% charging credit back on all sessions</li>
-          <li>$25 birthday charging credit</li>
-          <li>Voyager badge + name recognition on lounge displays</li>
-          <li>One complimentary premium beverage per visit</li>
-          <li>Early access to new locations (48-hour advance)</li>
-          <li>Preferred parking spots</li>
-          <li>10% off partner perks</li>
-        </ul>
-        <a href="https://fieldnotes.rangewayev.com" target="_blank" rel="noopener noreferrer" class="tier-cta">Learn How to Qualify</a>
-      </div>
-
-      <!-- Pioneer Tier -->
-      <div class="tier-card">
-        <div class="tier-icon">&#127956;</div>
-        <div class="tier-name">Pioneer</div>
-        <div class="tier-tagline">For elite frequent chargers</div>
-        <div class="tier-price">Earned Status</div>
-        <div class="tier-price-detail">25-49 sessions/year OR 7,500+ kWh</div>
-        <ul class="tier-features">
-          <li>10% charging credit back on all sessions</li>
-          <li>$100 annual milestone credit</li>
-          <li>$25 seasonal bonus (summer)</li>
-          <li>Physical membership card</li>
-          <li>Pioneer badge + name recognition</li>
-          <li>Annual Year in Review</li>
-          <li>Reserved seating in premium lounge area</li>
-          <li>2 guest passes per year</li>
-          <li>Member event invitations</li>
-          <li>Priority charging reservations</li>
-          <li>Extended grace period (10 min)</li>
-          <li>Dedicated support email (24hr)</li>
-          <li>15% off partner hotels</li>
-        </ul>
-        <a href="https://fieldnotes.rangewayev.com" target="_blank" rel="noopener noreferrer" class="tier-cta">See Your Progress</a>
-      </div>
-
-      <!-- Trailblazer Tier -->
-      <div class="tier-card invite-only">
-        <div class="tier-icon">&#127957;</div>
-        <div class="tier-name">Trailblazer</div>
-        <div class="tier-tagline">Invite-only elite tier</div>
-        <div class="tier-price">Invitation Only</div>
-        <div class="tier-price-detail">Maximum 50-200 members nationwide</div>
-        <ul class="tier-features">
-          <li>15% charging credit back</li>
-          <li>$500 annual credit</li>
-          <li>First $100 free at new locations</li>
-          <li>Dedicated relationship manager (personal concierge)</li>
-          <li>Premium membership kit</li>
-          <li>VIP lounge access 24/7</li>
-          <li>Reserved VIP parking</li>
-          <li>Annual Trailblazer Summit invitation</li>
-          <li>Unlimited guest passes</li>
-          <li>Guaranteed charging access</li>
-          <li>"Never wait" protocol</li>
-          <li>Complimentary premium accessories annually</li>
-        </ul>
-        <a href="https://fieldnotes.rangewayev.com" target="_blank" rel="noopener noreferrer" class="tier-cta">Learn About Invitations</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Calculator Section -->
-<section class="calculator-section" id="calculator">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-badge">Credits Calculator</span>
-      <h2>Calculate Your Credits</h2>
-      <p>See which tier you qualify for and how many credits you could earn based on your annual charging sessions.</p>
-    </div>
-    <div class="calculator-container">
-      <div class="calculator-input-card">
-        <h3>Your Annual Charging Sessions</h3>
-        <div class="slider-container">
-          <label for="charging-sessions">I charge about <span id="session-count">10</span> times per year at Rangeway</label>
-          <input type="range" id="charging-sessions" min="0" max="100" value="10" class="slider">
-          <div class="slider-labels">
-            <span>0</span>
-            <span>25</span>
-            <span>50</span>
-            <span>75</span>
-            <span>100</span>
-          </div>
+<main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 60 60">
+                    <rect x="8" y="8" width="44" height="44" rx="10" ry="10" stroke="#ffffff" stroke-width="4" fill="none"/>
+                    <path d="M30 14 L30 23 M30 37 L30 46 M14 30 L23 30 M37 30 L46 30" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+                    <path d="M18 18 L22 22 M38 38 L42 42 M42 18 L38 22 M22 38 L18 42" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+                    <circle cx="30" cy="30" r="7" fill="#f4a855"/>
+                </svg>
+            </div>
+            <h1>Earn Rewards <span class="highlight">Everywhere</span> You Charge</h1>
+            <p>Pathfinder Rewards is a loyalty program for EV drivers at participating charging locations nationwide. Open to everyone.</p>
+            <div class="hero-buttons">
+                <a href="#partners" class="btn btn-primary">Become a Partner</a>
+                <a href="#how-it-works" class="btn btn-secondary">Learn More</a>
+            </div>
         </div>
-        <p class="calculator-note">Based on $40 average charge ($0.50/kWh x 80 kWh per session)</p>
-      </div>
-      <div class="calculator-results" id="calculator-results">
-        <!-- Results populated by JavaScript -->
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- How It Works Section -->
-<section class="how-it-works">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-badge">How It Works</span>
-      <h2>Earned Status, Not Purchased</h2>
-      <p>Status is earned through your loyalty, not purchased. The more you charge, the higher your tier.</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-number">1</div>
-        <h3>Charge at Rangeway</h3>
-        <p>Every charging session counts toward your annual total. We track sessions and kWh automatically.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-number">2</div>
-        <h3>Earn Your Status</h3>
-        <p>Reach tier thresholds and your status upgrades immediately. Voyager at 10 sessions, Pioneer at 25 sessions.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-number">3</div>
-        <h3>Enjoy Your Credits</h3>
-        <p>Credits load automatically within 24 hours. Use them on your next charge or save them for a road trip.</p>
-      </div>
-    </div>
-
-    <!-- Tier Thresholds Table -->
-    <div class="threshold-table-wrapper">
-      <table class="threshold-table">
-        <thead>
-          <tr>
-            <th>Tier</th>
-            <th>Sessions/Year</th>
-            <th>OR kWh/Year</th>
-            <th>Credits Back</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Explorer</strong></td>
-            <td>Automatic</td>
-            <td>Automatic</td>
-            <td class="credits-cell">-</td>
-          </tr>
-          <tr>
-            <td><strong>Voyager</strong></td>
-            <td>10-24</td>
-            <td>3,000+</td>
-            <td class="credits-cell">5%</td>
-          </tr>
-          <tr>
-            <td><strong>Pioneer</strong></td>
-            <td>25-49</td>
-            <td>7,500+</td>
-            <td class="credits-cell">10%</td>
-          </tr>
-          <tr>
-            <td><strong>Trailblazer</strong></td>
-            <td><em>Invite Only</em></td>
-            <td><em>Invite Only</em></td>
-            <td class="credits-cell">15%</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- Locations Section -->
-<section class="locations-section" id="locations">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-badge">Our Network</span>
-      <h2>From Coast to Mountains</h2>
-      <p>Experience the diversity of America's scenic highways. Our charging network spans desert corridors, mountain passes, and coastal routes.</p>
-    </div>
-    <div class="locations-grid">
-      <div class="location-card">
-        <div class="location-image-wrapper">
-          <img src="{{ '/images/waystation-exterior2-jt.jpg' | relative_url }}" alt="Desert charging station surrounded by Joshua Trees" class="location-image">
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Start earning rewards in three simple steps</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Sign Up Free</h3>
+                    <p>Create your Pathfinder Rewards account at any participating location. It's free to join.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Charge at Partner Locations</h3>
+                    <p>Use your membership when charging at any Pathfinder partner location nationwide.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Earn Credits & Rewards</h3>
+                    <p>Earn credits on every charge. Unlock higher tiers and exclusive benefits as you charge more.</p>
+                </div>
+            </div>
         </div>
-        <h3>Desert Corridors</h3>
-        <p>From the Mojave to the Sonoran, our stations dot the vast desert landscapes where wide-open roads meet endless horizons. Experience the stark beauty of America's arid regions while staying charged and comfortable.</p>
-      </div>
-      <div class="location-card">
-        <div class="location-image-wrapper">
-          <img src="{{ '/images/waystation-exterior1-shasta.jpg' | relative_url }}" alt="Mountain charging station with Mt. Shasta in background" class="location-image">
+    </section>
+
+    <!-- Membership Tiers -->
+    <section id="tiers" class="tiers">
+        <div class="container">
+            <div class="section-header">
+                <h2>Membership Tiers</h2>
+                <p>The more you charge, the more you earn. Progress through tiers for better rewards.</p>
+            </div>
+            <div class="tiers-grid">
+                <!-- Explorer -->
+                <div class="tier-card explorer">
+                    <div class="tier-icon"><i class="fa-solid fa-compass"></i></div>
+                    <h3 class="tier-name">Explorer</h3>
+                    <p class="tier-tagline">Start your journey</p>
+                    <div class="tier-credit">0%</div>
+                    <div class="tier-credit-label">Credit Back</div>
+                    <span class="tier-qualify">Automatic on signup</span>
+                </div>
+
+                <!-- Voyager -->
+                <div class="tier-card voyager">
+                    <div class="tier-icon"><i class="fa-solid fa-route"></i></div>
+                    <h3 class="tier-name">Voyager</h3>
+                    <p class="tier-tagline">Regular traveler</p>
+                    <div class="tier-credit">5%</div>
+                    <div class="tier-credit-label">Credit Back</div>
+                    <span class="tier-qualify">10+ sessions/year</span>
+                </div>
+
+                <!-- Pioneer -->
+                <div class="tier-card pioneer">
+                    <div class="tier-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+                    <h3 class="tier-name">Pioneer</h3>
+                    <p class="tier-tagline">Elite status</p>
+                    <div class="tier-credit">10%</div>
+                    <div class="tier-credit-label">Credit Back</div>
+                    <span class="tier-qualify">25+ sessions/year</span>
+                </div>
+
+                <!-- Trailblazer -->
+                <div class="tier-card trailblazer">
+                    <div class="tier-icon"><i class="fa-solid fa-gem"></i></div>
+                    <h3 class="tier-name">Trailblazer</h3>
+                    <p class="tier-tagline">Invite only</p>
+                    <div class="tier-credit">15%</div>
+                    <div class="tier-credit-label">Credit Back</div>
+                    <span class="tier-qualify">By invitation</span>
+                </div>
+            </div>
         </div>
-        <h3>Mountain Passes</h3>
-        <p>Navigate alpine highways with confidence. Our high-elevation stations provide reliable charging through the Cascades, Sierra Nevada, and beyond. Adventure awaits where the mountains meet the sky.</p>
-      </div>
-      <div class="location-card">
-        <div class="location-image-wrapper">
-          <img src="{{ '/images/waystation-exterior4-pch.jpg' | relative_url }}" alt="Coastal charging station along the Pacific Coast Highway" class="location-image">
+    </section>
+
+    <!-- For Partners -->
+    <section id="partners" class="partners">
+        <div class="container">
+            <div class="section-header">
+                <h2>Bring Pathfinder to Your Location</h2>
+                <p>Partner with us to offer Pathfinder Rewards at your charging stations</p>
+            </div>
+
+            <div class="partner-benefits">
+                <div class="partner-benefit">
+                    <div class="partner-benefit-icon"><i class="fa-solid fa-users"></i></div>
+                    <h3>Customer Loyalty</h3>
+                    <p>Keep customers coming back with rewards they earn at your location.</p>
+                </div>
+                <div class="partner-benefit">
+                    <div class="partner-benefit-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                    <h3>Brand Exposure</h3>
+                    <p>Get featured in the Pathfinder network and reach more EV drivers.</p>
+                </div>
+                <div class="partner-benefit">
+                    <div class="partner-benefit-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h3>Join the Network</h3>
+                    <p>Be part of a growing network of premium charging destinations.</p>
+                </div>
+            </div>
+
+            <div class="partner-types">
+                <h3>Partner With Us</h3>
+                <div class="partner-icons">
+                    <div class="partner-type">
+                        <i class="fa-solid fa-charging-station"></i>
+                        <span>Charging Networks</span>
+                    </div>
+                    <div class="partner-type">
+                        <i class="fa-solid fa-hotel"></i>
+                        <span>Hotels</span>
+                    </div>
+                    <div class="partner-type">
+                        <i class="fa-solid fa-store"></i>
+                        <span>Retail</span>
+                    </div>
+                    <div class="partner-type">
+                        <i class="fa-solid fa-utensils"></i>
+                        <span>Restaurants</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="partner-cta">
+                <p>Interested in becoming a partner?</p>
+                <a href="mailto:partners@pathfinderrewards.com" class="partner-email">
+                    <i class="fa-solid fa-envelope"></i>
+                    partners@pathfinderrewards.com
+                </a>
+            </div>
         </div>
-        <h3>Coastal Highways</h3>
-        <p>Cruise the legendary Pacific Coast Highway and beyond with ocean views and sea breezes. Our coastal stations offer the perfect stop to recharge while taking in dramatic cliffside vistas and endless blue horizons.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- CTA Section -->
-<section class="pathfinder-cta">
-  <h2>Ready to Start Your Journey?</h2>
-  <p>Join thousands of drivers exploring America's scenic highways with Rangeway. Earn your status and start getting credits back with every charge.</p>
-  <a href="https://fieldnotes.rangewayev.com" class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">Sign Up for Updates</a>
-  <p class="info-text">Pathfinder Rewards launches with our first Basecamp in 2026.<br>Sign up now for early access and founding member benefits.</p>
-  <a href="https://rangewayev.com" class="back-link">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <line x1="19" y1="12" x2="5" y2="12"/>
-      <polyline points="12 19 5 12 12 5"/>
-    </svg>
-    Visit Rangeway
-  </a>
-</section>
-
-<script>
-// Calculator functionality
-const tierData = {
-  explorer: {
-    name: 'Explorer',
-    qualification: 'Automatic',
-    creditBack: 0,
-    annualCredit: 0,
-    birthdayCredit: 0,
-    sessionsRequired: 0
-  },
-  voyager: {
-    name: 'Voyager',
-    qualification: '10-24 sessions/year',
-    creditBack: 5,
-    annualCredit: 0,
-    birthdayCredit: 25,
-    sessionsRequired: 10
-  },
-  pioneer: {
-    name: 'Pioneer',
-    qualification: '25-49 sessions/year',
-    creditBack: 10,
-    annualCredit: 100,
-    birthdayCredit: 0,
-    seasonalBonus: 25,
-    sessionsRequired: 25
-  },
-  trailblazer: {
-    name: 'Trailblazer',
-    qualification: 'Invite Only',
-    creditBack: 15,
-    annualCredit: 500,
-    birthdayCredit: 0,
-    sessionsRequired: null
-  }
-};
-
-const avgCharge = 40;
-
-function calculateCredits(sessions, tierKey) {
-  const tier = tierData[tierKey];
-  const baseCredits = sessions * avgCharge * (tier.creditBack / 100);
-  const annualCredits = tier.annualCredit || 0;
-  const birthdayCredit = tier.birthdayCredit || 0;
-  const seasonalBonus = tier.seasonalBonus || 0;
-  const totalCredits = baseCredits + annualCredits + birthdayCredit + seasonalBonus;
-
-  return {
-    baseCredits: baseCredits,
-    bonusCredits: annualCredits + birthdayCredit + seasonalBonus,
-    totalCredits: totalCredits
-  };
-}
-
-function getQualifiedTier(sessions) {
-  if (sessions >= 25) return 'pioneer';
-  if (sessions >= 10) return 'voyager';
-  return 'explorer';
-}
-
-function formatMoney(amount) {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-  }).format(amount);
-}
-
-function updateCalculator(sessions) {
-  const resultsContainer = document.getElementById('calculator-results');
-  const qualifiedTier = getQualifiedTier(sessions);
-
-  resultsContainer.innerHTML = Object.keys(tierData).map(tierKey => {
-    const tier = tierData[tierKey];
-    const credits = calculateCredits(sessions, tierKey);
-    const isQualified = tierKey === qualifiedTier;
-
-    let creditBreakdown = '';
-    if (tier.creditBack > 0) {
-      creditBreakdown += `${tier.creditBack}% back`;
-    }
-    if (tier.annualCredit > 0) {
-      creditBreakdown += (creditBreakdown ? ' + ' : '') + `$${tier.annualCredit} annual`;
-    }
-    if (tier.birthdayCredit > 0) {
-      creditBreakdown += (creditBreakdown ? ' + ' : '') + `$${tier.birthdayCredit} birthday`;
-    }
-    if (tier.seasonalBonus > 0) {
-      creditBreakdown += (creditBreakdown ? ' + ' : '') + `$${tier.seasonalBonus} seasonal`;
-    }
-    if (!creditBreakdown) {
-      creditBreakdown = 'No credits';
-    }
-
-    return `
-      <div class="calc-result-card ${isQualified ? 'recommended' : ''}">
-        <div class="calc-tier-name">${tier.name}</div>
-        <div class="calc-tier-qualification">${tier.qualification}</div>
-        <div class="calc-metric">
-          <div class="calc-metric-label">Annual Credits</div>
-          <div class="calc-metric-value">${formatMoney(credits.totalCredits)}</div>
+    <!-- Benefits -->
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Member Benefits</h2>
+                <p>Exclusive perks at every tier</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>Credits on Every Charge</h3>
+                    <p>Earn credits automatically when you charge at any participating location.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fa-solid fa-couch"></i></div>
+                    <h3>Premium Lounges</h3>
+                    <p>Access comfortable lounges at select locations while your vehicle charges.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fa-solid fa-clock"></i></div>
+                    <h3>Priority Charging</h3>
+                    <p>Higher tier members get priority access during peak times.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fa-solid fa-gift"></i></div>
+                    <h3>Birthday Rewards</h3>
+                    <p>Receive special birthday credits as a Voyager member or above.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                    <h3>Annual Bonuses</h3>
+                    <p>Pioneer and Trailblazer members earn annual milestone bonuses.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fa-solid fa-star"></i></div>
+                    <h3>Exclusive Events</h3>
+                    <p>Get invites to member-only events and early access to new features.</p>
+                </div>
+            </div>
         </div>
-        <div class="calc-credit-breakdown">${creditBreakdown}</div>
-      </div>
-    `;
-  }).join('');
-}
+    </section>
 
-// Initialize calculator
-const slider = document.getElementById('charging-sessions');
-const sessionCountDisplay = document.getElementById('session-count');
-
-if (slider && sessionCountDisplay) {
-  slider.addEventListener('input', (e) => {
-    const sessions = parseInt(e.target.value);
-    sessionCountDisplay.textContent = sessions;
-    updateCalculator(sessions);
-  });
-
-  // Initialize with default value
-  updateCalculator(parseInt(slider.value));
-}
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      const navHeight = 80;
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-    }
-  });
-});
-</script>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Join Pathfinder Rewards and start earning at partner locations.</p>
+            <a href="mailto:partners@pathfinderrewards.com" class="btn btn-primary">Partner With Us</a>
+        </div>
+    </section>
+</main>

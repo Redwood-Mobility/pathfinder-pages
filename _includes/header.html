@@ -4,72 +4,32 @@
 
     <!-- Primary Meta Tags -->
     <title>{{ page.title | default: site.title }}</title>
-    <meta name="title" content="{{ page.title | default: site.title }}">
     <meta name="description" content="{{ page.description | default: site.description }}">
-    {% if page.keywords %}
-    <meta name="keywords" content="{{ page.keywords }}">
-    {% endif %}
     <meta name="author" content="{{ site.organization.name }}">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <meta name="theme-color" content="#f4a855">
 
-    <!-- Theme Color for Mobile -->
-    <meta name="theme-color" content="#F09060">
-
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ page.url | absolute_url }}">
     <meta property="og:title" content="{{ page.title | default: site.title }}">
     <meta property="og:description" content="{{ page.description | default: site.description }}">
-    <meta property="og:image" content="{{ site.url }}{{ page.og_image | default: '/images/waystation-exterior1-az.jpg' }}">
-    <meta property="og:site_name" content="{{ site.organization.name }}">
+    <meta property="og:image" content="{{ site.url }}/images/baker-exterior3.jpg">
+    <meta property="og:site_name" content="Pathfinder Rewards">
 
     <!-- Twitter Card -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{{ page.url | absolute_url }}">
-    <meta property="twitter:title" content="{{ page.title | default: site.title }}">
-    <meta property="twitter:description" content="{{ page.description | default: site.description }}">
-    <meta property="twitter:image" content="{{ site.url }}{{ page.og_image | default: '/images/waystation-exterior1-az.jpg' }}">
-    <meta name="twitter:site" content="@rangewayenergy">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+    <meta name="twitter:description" content="{{ page.description | default: site.description }}">
+    <meta name="twitter:image" content="{{ site.url }}/images/baker-exterior3.jpg">
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "{{ site.organization.name }}",
-        "url": "{{ site.url }}",
-        "logo": "{{ site.url }}/images/banner.png",
-        "description": "{{ site.organization.tagline }}",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "{{ site.organization.address.street }}",
-            "addressLocality": "{{ site.organization.address.city }}",
-            "addressRegion": "{{ site.organization.address.state }}",
-            "postalCode": "{{ site.organization.address.zip }}",
-            "addressCountry": "US"
-        },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "{{ site.organization.phone }}",
-            "contactType": "Customer Service",
-            "email": "{{ site.organization.email }}"
-        },
-        "sameAs": [
-            "{{ site.social.twitter }}",
-            "{{ site.social.instagram }}",
-            "{{ site.social.linkedin }}",
-            "{{ site.social.youtube }}"
-        ]
-    }
-    </script>
-
-    <!-- Fonts - Brand Guidelines: Montserrat for headlines, Source Sans Pro for body, Raleway for Pathfinder wordmark -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Raleway:wght@600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- Pathfinder Favicon -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/pathfinder-assets/pathfinder-mark-favicon-dark-32.png' | relative_url }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ '/pathfinder-assets/pathfinder-mark-favicon-dark-16.png' | relative_url }}">
     <link rel="apple-touch-icon" sizes="128x128" href="{{ '/pathfinder-assets/pathfinder-mark-dark-128.png' | relative_url }}">
@@ -77,76 +37,40 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- External Stylesheets -->
-    {% if page.stylesheet %}
-    <link rel="stylesheet" href="{{ '/assets/css/' | append: page.stylesheet | append: '.css' | relative_url }}">
-    {% endif %}
-
-    <!-- Preconnect to external resources -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://tinylytics.app">
-
-    {% if site.analytics.enabled %}
-    <!-- Analytics -->
-    <script src="https://tinylytics.app/embed/{{ site.analytics.tinylytics_id }}.js" defer></script>
-    {% endif %}
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 </head>
 
-<!-- Skip to main content for accessibility -->
+<!-- Skip Link -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<!-- Branded Navigation -->
+<!-- Navigation -->
 <nav class="navbar">
     <div class="container">
         <div class="nav-wrapper">
-            <div class="logo">
-                <a href="{{ '/' | relative_url }}" class="logo-link">
-                    <!-- Pathfinder Mark - uses currentColor for theme support -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 60 60">
-                        <!-- Rounded badge outline -->
-                        <rect x="8" y="8" width="44" height="44" rx="10" ry="10"
-                              stroke="currentColor" stroke-width="4" fill="none"/>
-                        <!-- Cardinal points (strong) -->
-                        <path d="M30 14 L30 23 M30 37 L30 46 M14 30 L23 30 M37 30 L46 30"
-                              stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
-                        <!-- Intercardinal points (subtle) -->
-                        <path d="M18 18 L22 22 M38 38 L42 42 M42 18 L38 22 M22 38 L18 42"
-                              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
-                        <!-- Warm center dot - always brand color -->
-                        <circle cx="30" cy="30" r="7" fill="#f4a855"/>
-                    </svg>
-                    <!-- Pathfinder Wordmark - Raleway Bold -->
-                    <span class="logo-text">Pathfinder Rewards</span>
-                </a>
+            <a href="{{ '/' | relative_url }}" class="logo-link">
+                <!-- Pathfinder Mark -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 60 60">
+                    <rect x="8" y="8" width="44" height="44" rx="10" ry="10" stroke="#2d2d2d" stroke-width="4" fill="none"/>
+                    <path d="M30 14 L30 23 M30 37 L30 46 M14 30 L23 30 M37 30 L46 30" stroke="#2d2d2d" stroke-width="3.5" stroke-linecap="round"/>
+                    <path d="M18 18 L22 22 M38 38 L42 42 M42 18 L38 22 M22 38 L18 42" stroke="#2d2d2d" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+                    <circle cx="30" cy="30" r="7" fill="#f4a855"/>
+                </svg>
+                <span class="logo-text">Pathfinder Rewards</span>
+            </a>
+
+            <div class="nav-menu">
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#tiers" class="nav-link">Tiers</a>
+                <a href="#partners" class="nav-link">For Partners</a>
+                <a href="#benefits" class="nav-link">Benefits</a>
             </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
-                <a href="{{ '/tiers.html' | relative_url }}" class="nav-link">Tiers</a>
-                <a href="{{ '/benefits.html' | relative_url }}" class="nav-link">Benefits</a>
-                <a href="{{ '/calculator.html' | relative_url }}" class="nav-link">Calculator</a>
-                <a href="https://rangewayev.com" target="_blank" rel="noopener noreferrer" class="nav-link">Main Site</a>
-            </div>
-            <div class="nav-actions">
-                <div class="social-icons">
-                    <a href="{{ site.social.twitter }}" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="X (Twitter)">
-                        <i class="fa-brands fa-x-twitter"></i>
-                    </a>
-                    <a href="{{ site.social.instagram }}" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                    <a href="{{ site.social.linkedin }}" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
-                        <i class="fa-brands fa-linkedin"></i>
-                    </a>
-                    <a href="{{ site.social.youtube }}" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="YouTube">
-                        <i class="fa-brands fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+
+            <button class="mobile-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </div>
 </nav>

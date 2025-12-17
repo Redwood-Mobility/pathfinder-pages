@@ -1,16 +1,16 @@
-# Pathfinder Rewards - Rangeway
+# Pathfinder Rewards
 # Jekyll configuration for GitHub Pages
 
 # Site settings
-title: Pathfinder Rewards | Rangeway
-description: "Earn benefits while exploring America's scenic highways. Join Rangeway's loyalty program for exclusive discounts, experiences, and community."
+title: Pathfinder Rewards | Earn Rewards Everywhere You Charge
+description: "Pathfinder Rewards is a loyalty program for EV drivers. Earn credits at participating charging locations nationwide. Open to all EV drivers."
 url: "https://pathfinderrewards.com"
 baseurl: ""
 
 # Organization info
 organization:
   name: Rangeway Energy, Inc.
-  tagline: "Pathfinder Rewards - Explore More. Earn More."
+  tagline: "Pathfinder Rewards - Earn Rewards Everywhere You Charge"
   main_site: "https://rangewayev.com"
   newsroom_site: "https://newsroom.rangeway.energy"
   email: hello@rangewayev.com
@@ -28,19 +28,6 @@ social:
   instagram: "https://instagram.com/rangewayenergy"
   linkedin: "https://linkedin.com/company/rangewayenergy"
   youtube: "https://youtube.com/@rangewayenergy"
-
-# Page metadata
-pages:
-  index:
-    title: "Pathfinder Rewards | Rangeway"
-    description: "Earn benefits while exploring America's scenic highways. Join Rangeway's loyalty program for exclusive discounts, experiences, and community."
-    keywords: "Pathfinder Rewards, Rangeway loyalty program, EV charging rewards, travel rewards, membership tiers"
-    og_image: ""
-  playbook:
-    title: "Pathfinder Rewards Playbook | Rangeway"
-    description: "Comprehensive guide to the Pathfinder Rewards program - membership tiers, benefits, launch strategy, and operational guidelines."
-    keywords: "Pathfinder playbook, loyalty program guide, membership benefits, Rangeway rewards"
-    og_image: ""
 
 # Build settings
 markdown: kramdown
