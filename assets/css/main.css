@@ -288,6 +288,7 @@ section {
 .hero h1 {
     font-size: 2.5rem;
     margin-bottom: var(--space-sm);
+    color: #ffffff;
 }
 
 .hero h1 .highlight {
@@ -298,6 +299,7 @@ section {
     font-size: 1.125rem;
     margin-bottom: var(--space-md);
     opacity: 0.9;
+    color: #ffffff;
 }
 
 .hero-buttons {
