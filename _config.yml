@@ -9,11 +9,9 @@ baseurl: ""
 
 # Organization info
 organization:
-  name: Rangeway Energy, Inc.
+  name: Pathfinder Rewards
   tagline: "Pathfinder Rewards - Earn Rewards Everywhere You Charge"
-  main_site: "https://rangewayev.com"
-  newsroom_site: "https://newsroom.rangeway.energy"
-  email: hello@rangewayev.com
+  email: hello@pathfinderrewards.com
   phone: "(650) 420-6300"
   phone_raw: "6504206300"
   address:
@@ -24,10 +22,8 @@ organization:
 
 # Social media
 social:
-  twitter: "https://x.com/rangewayenergy"
-  instagram: "https://instagram.com/rangewayenergy"
-  linkedin: "https://linkedin.com/company/rangewayenergy"
-  youtube: "https://youtube.com/@rangewayenergy"
+  twitter: "https://x.com/pathfinderrewards"
+  instagram: "https://instagram.com/pathfinderrewards"
 
 # Build settings
 markdown: kramdown
