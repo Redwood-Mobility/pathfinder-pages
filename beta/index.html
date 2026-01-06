@@ -3,66 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pathfinder Rewards</title>
-    <meta name="description" content="The EV driver's reward network.">
+    <title>Pathfinder Rewards | Earn Rewards Everywhere You Charge</title>
+    <meta name="description" content="Pathfinder Rewards is a loyalty program for EV drivers. Earn credits at participating charging locations nationwide.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
 
     <link rel="icon" type="image/png" sizes="32x32" href="../pathfinder-assets/pathfinder-mark-favicon-dark-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../pathfinder-assets/pathfinder-mark-favicon-dark-16.png">
 
     <style>
         /* =============================================
-           PATHFINDER // INFINITE ROAD
-           Brutalist • Cinematic • Electric
+           PATHFINDER REWARDS
+           On-brand • Warm • Premium
            ============================================= */
 
-        * {
+        :root {
+            /* Brand Colors */
+            --charcoal: #2d2d2d;
+            --warm: #f4a855;
+            --warm-light: #f8c078;
+            --warm-dark: #e8923a;
+            --cream: #f5f1eb;
+            --white: #ffffff;
+
+            /* Extended Palette */
+            --charcoal-light: #3d3d3d;
+            --charcoal-dark: #1a1a1a;
+            --cream-dark: #e8e4de;
+            --text-muted: #6b6b6b;
+
+            /* Tier Colors */
+            --tier-explorer: #b87333;
+            --tier-voyager: #8a9a9a;
+            --tier-pioneer: #d4af37;
+            --tier-trailblazer: #f4a855;
+
+            /* Typography */
+            --font-display: 'Raleway', sans-serif;
+            --font-body: 'Source Sans 3', sans-serif;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --space-3xl: 8rem;
+
+            /* Transitions */
+            --ease: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Dark mode */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: var(--charcoal);
+                --bg-secondary: var(--charcoal-dark);
+                --bg-card: var(--charcoal-light);
+                --text-primary: var(--cream);
+                --text-secondary: #b0b0b0;
+                --border-color: rgba(255,255,255,0.1);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-primary: var(--cream);
+                --bg-secondary: var(--white);
+                --bg-card: var(--white);
+                --text-primary: var(--charcoal);
+                --text-secondary: var(--text-muted);
+                --border-color: rgba(0,0,0,0.08);
+            }
+        }
+
+        /* Reset */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --void: #050505;
-            --obsidian: #0a0a0a;
-            --graphite: #141414;
-            --steel: #1e1e1e;
-            --smoke: #2a2a2a;
-            --ash: #666;
-            --fog: #999;
-            --cloud: #ccc;
-            --snow: #f0f0f0;
-            --white: #fff;
-
-            --electric: #00ff88;
-            --electric-dim: #00cc6a;
-            --plasma: #ff3366;
-            --plasma-dim: #cc2952;
-            --volt: #ffee00;
-            --azure: #0088ff;
-
-            --font-display: 'Syne', sans-serif;
-            --font-mono: 'Space Mono', monospace;
-        }
-
         html {
             scroll-behavior: smooth;
-            background: var(--void);
         }
 
         body {
-            font-family: var(--font-mono);
-            background: var(--void);
-            color: var(--snow);
-            overflow-x: hidden;
-            cursor: crosshair;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            -webkit-font-smoothing: antialiased;
         }
 
-        ::selection {
-            background: var(--electric);
-            color: var(--void);
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
         }
 
         a {
@@ -70,67 +113,17 @@
             text-decoration: none;
         }
 
-        /* ============ CUSTOM CURSOR TRAIL ============ */
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--electric);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-            transition: transform 0.1s ease;
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
-        /* ============ LOADER ============ */
-        .loader {
-            position: fixed;
-            inset: 0;
-            background: var(--void);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 2rem;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-text {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--fog);
-        }
-
-        .loader-bar {
-            width: 200px;
-            height: 2px;
-            background: var(--steel);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .loader-bar::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 0;
-            background: var(--electric);
-            animation: load 1.5s ease-out forwards;
-        }
-
-        @keyframes load {
-            to { width: 100%; }
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
         }
 
         /* ============ NAVIGATION ============ */
@@ -140,739 +133,654 @@
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 1.5rem 2rem;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s var(--ease);
+        }
+
+        .nav-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            mix-blend-mode: difference;
+            padding: var(--space-sm) var(--space-md);
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .nav-logo {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
         }
 
-        .nav-logo span {
-            color: var(--electric);
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-wordmark {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
         }
 
         .nav-links {
             display: none;
-            gap: 3rem;
+            gap: var(--space-lg);
             list-style: none;
         }
 
         .nav-links a {
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--white);
-            transition: color 0.3s ease;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.2s var(--ease);
         }
 
         .nav-links a:hover {
-            color: var(--electric);
+            color: var(--warm);
         }
 
-        .nav-status {
+        .nav-cta {
+            display: none;
+            padding: 0.6rem 1.25rem;
+            background: var(--warm);
+            color: var(--charcoal);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.2s var(--ease);
+        }
+
+        .nav-cta:hover {
+            background: var(--warm-light);
+            transform: translateY(-1px);
+        }
+
+        .mobile-toggle {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.65rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--white);
+            flex-direction: column;
+            gap: 5px;
+            padding: var(--space-xs);
+            background: none;
+            border: none;
+            cursor: pointer;
         }
 
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--electric);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+        .mobile-toggle span {
+            width: 22px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 1px;
+            transition: all 0.2s var(--ease);
         }
 
         @media (min-width: 768px) {
             .nav-links { display: flex; }
+            .nav-cta { display: block; }
+            .mobile-toggle { display: none; }
         }
 
         /* ============ HERO ============ */
         .hero {
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 2rem;
+            align-items: center;
+            padding: calc(80px + var(--space-xl)) var(--space-md) var(--space-xl);
             position: relative;
             overflow: hidden;
         }
 
-        .hero-bg {
+        .hero::before {
+            content: '';
             position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse 80% 50% at 50% 120%, var(--electric), transparent 50%),
-                radial-gradient(ellipse 60% 40% at 80% 80%, var(--plasma-dim), transparent 40%),
-                linear-gradient(to bottom, var(--void), var(--obsidian));
-            opacity: 0.4;
-        }
-
-        .hero-grid {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(var(--steel) 1px, transparent 1px),
-                linear-gradient(90deg, var(--steel) 1px, transparent 1px);
-            background-size: 60px 60px;
-            opacity: 0.3;
-            transform: perspective(500px) rotateX(60deg);
-            transform-origin: center top;
+            top: 0;
+            right: -20%;
+            width: 70%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, var(--warm), transparent 60%);
+            opacity: 0.08;
+            pointer-events: none;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             width: 100%;
         }
 
-        .hero-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--electric);
-            margin-bottom: 1.5rem;
-            display: flex;
+        .hero-grid {
+            display: grid;
+            gap: var(--space-xl);
             align-items: center;
-            gap: 1rem;
         }
 
-        .hero-label::before {
-            content: '';
-            width: 40px;
-            height: 1px;
-            background: var(--electric);
+        .hero-text {
+            max-width: 600px;
         }
 
-        .hero-title {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 15vw, 12rem);
-            font-weight: 800;
-            line-height: 0.85;
-            letter-spacing: -0.04em;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 0.4rem 0.9rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
         }
 
-        .hero-title .line {
-            display: block;
-            overflow: hidden;
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--warm);
+            border-radius: 50%;
         }
 
-        .hero-title .line span {
-            display: block;
-            transform: translateY(100%);
-            animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: var(--space-md);
+            color: var(--text-primary);
         }
 
-        .hero-title .line:nth-child(2) span { animation-delay: 0.1s; }
-        .hero-title .line:nth-child(3) span { animation-delay: 0.2s; }
-
-        @keyframes slideUp {
-            to { transform: translateY(0); }
-        }
-
-        .hero-title .stroke {
-            -webkit-text-stroke: 1px var(--snow);
-            color: transparent;
-        }
-
-        .hero-bottom {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            padding-top: 3rem;
-            border-top: 1px solid var(--smoke);
-            margin-top: 3rem;
+        .hero h1 .highlight {
+            color: var(--warm);
         }
 
         .hero-desc {
-            font-size: 0.85rem;
-            line-height: 1.8;
-            color: var(--fog);
-            max-width: 400px;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
+            max-width: 500px;
         }
 
-        .hero-cta {
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .btn {
             display: inline-flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem 2rem;
-            background: var(--electric);
-            color: var(--void);
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            align-self: flex-start;
-        }
-
-        .hero-cta:hover {
-            background: var(--white);
-            gap: 1.5rem;
-        }
-
-        .hero-cta svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            padding-top: 2rem;
-        }
-
-        .stat {
-            text-align: left;
-        }
-
-        .stat-value {
+            justify-content: center;
+            gap: var(--space-xs);
+            padding: 0.9rem 1.75rem;
             font-family: var(--font-display);
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--white);
-            line-height: 1;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s var(--ease);
         }
 
-        .stat-label {
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--ash);
-            margin-top: 0.5rem;
+        .btn-primary {
+            background: var(--warm);
+            color: var(--charcoal);
         }
 
-        @media (min-width: 768px) {
-            .hero { padding: 4rem; }
-            .hero-bottom {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: flex-end;
-            }
-            .hero-stats {
-                gap: 4rem;
-            }
+        .btn-primary:hover {
+            background: var(--warm-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(244, 168, 85, 0.25);
         }
 
-        /* ============ MARQUEE ============ */
-        .marquee {
-            background: var(--electric);
-            color: var(--void);
-            padding: 1rem 0;
-            overflow: hidden;
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--warm);
+            color: var(--warm);
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .hero-visual {
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-compass {
+            width: 280px;
+            height: 280px;
             position: relative;
         }
 
-        .marquee-inner {
-            display: flex;
-            gap: 4rem;
-            animation: scroll 20s linear infinite;
-            width: max-content;
+        .hero-compass img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 40px rgba(244, 168, 85, 0.2));
         }
 
-        .marquee-item {
-            font-family: var(--font-display);
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-
-        .marquee-item::after {
-            content: '◆';
-            font-size: 0.5rem;
-        }
-
-        @keyframes scroll {
-            to { transform: translateX(-50%); }
+        @media (min-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero-visual {
+                display: flex;
+            }
+            .hero-compass {
+                width: 350px;
+                height: 350px;
+            }
         }
 
         /* ============ SECTION STYLES ============ */
         section {
-            padding: 6rem 2rem;
-            position: relative;
-        }
-
-        @media (min-width: 768px) {
-            section { padding: 10rem 4rem; }
+            padding: var(--space-3xl) 0;
         }
 
         .section-header {
-            margin-bottom: 4rem;
+            text-align: center;
+            margin-bottom: var(--space-xl);
         }
 
-        .section-number {
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            letter-spacing: 0.3em;
-            color: var(--ash);
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
+        .section-label {
+            display: inline-block;
             font-family: var(--font-display);
-            font-size: clamp(2rem, 6vw, 4rem);
+            font-size: 0.75rem;
             font-weight: 700;
-            line-height: 1;
-            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--warm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto;
         }
 
         /* ============ HOW IT WORKS ============ */
-        .process {
-            background: var(--obsidian);
+        .how-it-works {
+            background: var(--bg-secondary);
         }
 
-        .process-grid {
+        .steps {
             display: grid;
-            gap: 1px;
-            background: var(--smoke);
+            gap: var(--space-lg);
         }
 
-        .process-step {
-            background: var(--obsidian);
-            padding: 3rem 2rem;
-            position: relative;
-            transition: background 0.5s ease;
+        .step {
+            display: flex;
+            gap: var(--space-md);
+            align-items: flex-start;
         }
 
-        .process-step:hover {
-            background: var(--graphite);
-        }
-
-        .process-step::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: var(--smoke);
-            transition: background 0.3s ease;
-        }
-
-        .process-step:hover::before {
-            background: var(--electric);
-        }
-
-        .step-num {
+        .step-number {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--warm), var(--warm-dark));
+            color: var(--charcoal);
             font-family: var(--font-display);
-            font-size: 4rem;
+            font-size: 1.5rem;
             font-weight: 800;
-            color: var(--steel);
-            line-height: 1;
-            margin-bottom: 1.5rem;
-            transition: color 0.3s ease;
+            border-radius: 16px;
         }
 
-        .process-step:hover .step-num {
-            color: var(--electric);
-        }
-
-        .step-title {
-            font-family: var(--font-display);
+        .step-content h3 {
             font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            color: var(--white);
+            margin-bottom: 0.25rem;
         }
 
-        .step-desc {
-            font-size: 0.8rem;
-            line-height: 1.7;
-            color: var(--fog);
+        .step-content p {
+            color: var(--text-secondary);
         }
 
         @media (min-width: 768px) {
-            .process-grid {
+            .steps {
                 grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-xl);
+            }
+            .step {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
             }
         }
 
         /* ============ TIERS ============ */
         .tiers {
-            background: var(--void);
-            overflow: hidden;
+            background: var(--bg-primary);
         }
 
-        .tiers-track {
-            display: flex;
-            gap: 1rem;
-            padding: 2rem 0;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
+        .tiers-grid {
+            display: grid;
+            gap: var(--space-md);
         }
 
-        .tiers-track::-webkit-scrollbar {
-            display: none;
-        }
-
-        .tier {
-            flex: 0 0 85%;
-            max-width: 400px;
-            scroll-snap-align: start;
-            background: var(--graphite);
-            border: 1px solid var(--smoke);
-            padding: 2.5rem;
+        .tier-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: var(--space-lg);
             position: relative;
-            transition: all 0.4s ease;
+            overflow: hidden;
+            transition: all 0.3s var(--ease);
         }
 
-        .tier:first-child { margin-left: 2rem; }
-        .tier:last-child { margin-right: 2rem; }
-
-        @media (min-width: 768px) {
-            .tiers-track {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1px;
-                background: var(--smoke);
-                padding: 0;
-                overflow: visible;
-            }
-            .tier {
-                max-width: none;
-                flex: none;
-                margin: 0 !important;
-            }
-        }
-
-        .tier:hover {
-            background: var(--steel);
-        }
-
-        .tier-badge {
+        .tier-card::before {
+            content: '';
             position: absolute;
-            top: 2rem;
-            right: 2rem;
-            font-size: 0.55rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            padding: 0.4rem 0.8rem;
-            border: 1px solid var(--smoke);
-            color: var(--fog);
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--tier-color);
+        }
+
+        .tier-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+        }
+
+        .tier-card.explorer { --tier-color: var(--tier-explorer); }
+        .tier-card.voyager { --tier-color: var(--tier-voyager); }
+        .tier-card.pioneer { --tier-color: var(--tier-pioneer); }
+        .tier-card.trailblazer { --tier-color: var(--tier-trailblazer); }
+
+        .tier-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--space-md);
         }
 
         .tier-icon {
             width: 48px;
             height: 48px;
-            margin-bottom: 2rem;
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            margin-bottom: var(--space-sm);
         }
 
-        .tier-icon::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border: 2px solid currentColor;
-            transform: rotate(45deg);
+        .tier-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--tier-color);
+            fill: none;
+            stroke-width: 2;
         }
-
-        .tier-icon::after {
-            content: '';
-            position: absolute;
-            inset: 8px;
-            background: currentColor;
-            transform: rotate(45deg);
-        }
-
-        .tier.explorer .tier-icon { color: #b87333; }
-        .tier.voyager .tier-icon { color: #8a9a9a; }
-        .tier.pioneer .tier-icon { color: #d4af37; }
-        .tier.trailblazer .tier-icon { color: var(--electric); }
 
         .tier-name {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-            color: var(--white);
+            font-size: 1.35rem;
+            margin-bottom: 0.15rem;
         }
 
         .tier-tagline {
-            font-size: 0.7rem;
-            color: var(--ash);
-            letter-spacing: 0.1em;
-            margin-bottom: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
         }
 
         .tier-rate {
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--smoke);
+            text-align: right;
         }
 
         .tier-percent {
             font-family: var(--font-display);
-            font-size: 3rem;
+            font-size: 2.25rem;
             font-weight: 800;
+            color: var(--tier-color);
             line-height: 1;
         }
 
-        .tier.explorer .tier-percent { color: #b87333; }
-        .tier.voyager .tier-percent { color: #8a9a9a; }
-        .tier.pioneer .tier-percent { color: #d4af37; }
-        .tier.trailblazer .tier-percent { color: var(--electric); }
-
         .tier-percent-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--ash);
-        }
-
-        .tier-perks {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .tier-perks li {
             font-size: 0.75rem;
-            color: var(--fog);
-            padding: 0.6rem 0;
-            border-bottom: 1px solid var(--smoke);
+            color: var(--text-secondary);
+        }
+
+        .tier-benefits {
+            list-style: none;
+            margin: var(--space-md) 0;
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .tier-benefits li {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: var(--space-xs);
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
 
-        .tier-perks li::before {
-            content: '+';
-            color: var(--ash);
-            font-weight: 700;
+        .tier-benefits li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background: var(--tier-color);
+            border-radius: 50%;
+            flex-shrink: 0;
         }
 
-        .tier-perks li:last-child {
-            border-bottom: none;
-        }
-
-        .tier-req {
-            font-size: 0.65rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--ash);
-            padding: 0.75rem 1rem;
-            background: var(--obsidian);
+        .tier-qualify {
             display: inline-block;
+            padding: 0.4rem 0.9rem;
+            background: var(--bg-primary);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
         }
 
-        /* Trailblazer special */
-        .tier.trailblazer {
-            background: linear-gradient(135deg, var(--graphite), var(--obsidian));
-            border-color: var(--electric);
+        /* Trailblazer Premium */
+        .tier-card.trailblazer {
+            background: linear-gradient(135deg, var(--charcoal), var(--charcoal-dark));
+            border-color: var(--warm);
         }
 
-        .tier.trailblazer .tier-badge {
-            background: var(--electric);
-            color: var(--void);
-            border-color: var(--electric);
+        .tier-card.trailblazer .tier-icon {
+            background: rgba(244, 168, 85, 0.15);
+        }
+
+        .tier-card.trailblazer .tier-name,
+        .tier-card.trailblazer .tier-benefits li {
+            color: var(--cream);
+        }
+
+        .tier-card.trailblazer .tier-benefits {
+            border-top-color: rgba(255,255,255,0.1);
+        }
+
+        .tier-card.trailblazer .tier-qualify {
+            background: rgba(244, 168, 85, 0.15);
+            color: var(--warm);
+        }
+
+        @media (min-width: 768px) {
+            .tiers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .tiers-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
         /* ============ BENEFITS ============ */
         .benefits {
-            background: var(--graphite);
+            background: var(--bg-secondary);
         }
 
-        .benefits-list {
+        .benefits-grid {
             display: grid;
-            gap: 0;
+            gap: var(--space-md);
         }
 
-        .benefit {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            align-items: center;
-            gap: 2rem;
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--smoke);
-            transition: all 0.3s ease;
+        .benefit-card {
+            padding: var(--space-lg);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            transition: all 0.2s var(--ease);
         }
 
-        .benefit:hover {
-            padding-left: 1rem;
-            background: linear-gradient(90deg, var(--steel), transparent);
-        }
-
-        .benefit-num {
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            color: var(--ash);
-            width: 40px;
-        }
-
-        .benefit-content h3 {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-            color: var(--white);
-        }
-
-        .benefit-content p {
-            font-size: 0.8rem;
-            color: var(--fog);
+        .benefit-card:hover {
+            border-color: var(--warm);
         }
 
         .benefit-icon {
-            width: 40px;
-            height: 40px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--smoke);
-            transition: all 0.3s ease;
-        }
-
-        .benefit:hover .benefit-icon {
-            background: var(--electric);
+            background: linear-gradient(135deg, var(--warm), var(--warm-dark));
+            border-radius: 12px;
+            margin-bottom: var(--space-sm);
         }
 
         .benefit-icon svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--fog);
-            transition: stroke 0.3s ease;
+            width: 24px;
+            height: 24px;
+            stroke: var(--charcoal);
+            fill: none;
+            stroke-width: 2;
         }
 
-        .benefit:hover .benefit-icon svg {
-            stroke: var(--void);
+        .benefit-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.35rem;
         }
 
-        @media (max-width: 767px) {
-            .benefit {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+        .benefit-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        @media (min-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-            .benefit-num { display: none; }
-            .benefit-icon { display: none; }
         }
 
-        /* ============ PARTNERS CTA ============ */
-        .partners-cta {
-            background: var(--void);
+        @media (min-width: 1024px) {
+            .benefits-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ============ PARTNERS ============ */
+        .partners {
+            background: var(--charcoal);
+            color: var(--cream);
+        }
+
+        .partners .section-header h2,
+        .partners .section-header p {
+            color: var(--cream);
+        }
+
+        .partners .section-header p {
+            opacity: 0.8;
+        }
+
+        .partner-benefits {
+            display: grid;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .partner-benefit {
             text-align: center;
-            padding: 10rem 2rem;
-            position: relative;
-            overflow: hidden;
         }
 
-        .partners-cta::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, var(--plasma-dim), transparent 60%);
-            opacity: 0.15;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .cta-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--plasma);
-            margin-bottom: 2rem;
-        }
-
-        .cta-title {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800;
-            line-height: 1;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-title span {
-            color: var(--plasma);
-        }
-
-        .cta-desc {
-            font-size: 0.9rem;
-            line-height: 1.8;
-            color: var(--fog);
-            margin-bottom: 3rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.25rem 2.5rem;
-            background: transparent;
-            border: 1px solid var(--plasma);
-            color: var(--plasma);
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background: var(--plasma);
-            color: var(--white);
-            gap: 1.5rem;
-        }
-
-        .cta-button svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* ============ PARTNER TYPES ============ */
-        .partner-types {
+        .partner-benefit-icon {
+            width: 64px;
+            height: 64px;
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 3rem;
-            margin-top: 4rem;
+            background: rgba(244, 168, 85, 0.12);
+            border-radius: 16px;
+            margin: 0 auto var(--space-sm);
+        }
+
+        .partner-benefit-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--warm);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .partner-benefit h3 {
+            font-size: 1.15rem;
+            color: var(--warm);
+            margin-bottom: 0.35rem;
+        }
+
+        .partner-benefit p {
+            color: var(--cream);
+            opacity: 0.75;
+            font-size: 0.95rem;
+        }
+
+        .partner-types {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .partner-types h4 {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--cream);
+            opacity: 0.6;
+            margin-bottom: var(--space-md);
+        }
+
+        .partner-icons {
+            display: flex;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-xl);
         }
 
         .partner-type {
-            text-align: center;
-            opacity: 0.5;
-            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-xs);
+            opacity: 0.6;
+            transition: opacity 0.2s var(--ease);
         }
 
         .partner-type:hover {
@@ -882,104 +790,170 @@
         .partner-type svg {
             width: 32px;
             height: 32px;
-            stroke: var(--fog);
-            margin-bottom: 0.5rem;
+            stroke: var(--warm);
+            fill: none;
+            stroke-width: 1.5;
         }
 
         .partner-type span {
-            display: block;
-            font-size: 0.6rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--ash);
+            font-size: 0.8rem;
+            color: var(--cream);
+        }
+
+        .partner-cta {
+            text-align: center;
+        }
+
+        .partner-cta p {
+            color: var(--cream);
+            opacity: 0.7;
+            margin-bottom: var(--space-sm);
+        }
+
+        .partner-email {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--warm);
+            transition: color 0.2s var(--ease);
+        }
+
+        .partner-email:hover {
+            color: var(--warm-light);
+        }
+
+        .partner-email svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .partner-benefits {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ============ CTA ============ */
+        .cta {
+            background: var(--bg-primary);
+            text-align: center;
+        }
+
+        .cta-inner {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: var(--space-sm);
+        }
+
+        .cta h2 span {
+            color: var(--warm);
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
         }
 
         /* ============ FOOTER ============ */
         .footer {
-            background: var(--obsidian);
-            border-top: 1px solid var(--smoke);
-            padding: 4rem 2rem;
+            background: var(--charcoal-dark);
+            color: var(--cream);
+            padding: var(--space-2xl) 0 var(--space-lg);
         }
 
-        .footer-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .footer-top {
+        .footer-grid {
             display: grid;
-            gap: 3rem;
-            margin-bottom: 4rem;
-            padding-bottom: 4rem;
-            border-bottom: 1px solid var(--smoke);
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
         }
 
         .footer-brand {
-            max-width: 300px;
+            max-width: 280px;
         }
 
         .footer-logo {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--white);
-            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .footer-logo img {
+            height: 36px;
+            width: auto;
         }
 
         .footer-logo span {
-            color: var(--electric);
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--cream);
         }
 
         .footer-tagline {
-            font-size: 0.8rem;
-            color: var(--fog);
-            line-height: 1.7;
+            font-size: 0.9rem;
+            color: var(--cream);
+            opacity: 0.6;
         }
 
         .footer-links {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            gap: var(--space-lg);
         }
 
         .footer-col h4 {
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            letter-spacing: 0.2em;
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 700;
             text-transform: uppercase;
-            color: var(--ash);
-            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            color: var(--cream);
+            opacity: 0.5;
+            margin-bottom: var(--space-sm);
         }
 
         .footer-col a {
             display: block;
-            font-size: 0.85rem;
-            color: var(--fog);
-            padding: 0.4rem 0;
-            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            color: var(--cream);
+            opacity: 0.7;
+            padding: 0.3rem 0;
+            transition: all 0.2s var(--ease);
         }
 
         .footer-col a:hover {
-            color: var(--electric);
+            opacity: 1;
+            color: var(--warm);
         }
 
         .footer-bottom {
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(255,255,255,0.08);
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: var(--space-sm);
             align-items: center;
             text-align: center;
         }
 
         .footer-copy {
-            font-size: 0.7rem;
-            color: var(--ash);
-            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            color: var(--cream);
+            opacity: 0.5;
         }
 
         .footer-social {
             display: flex;
-            gap: 1rem;
+            gap: var(--space-sm);
         }
 
         .footer-social a {
@@ -988,29 +962,31 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--graphite);
-            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            transition: all 0.2s var(--ease);
         }
 
         .footer-social a:hover {
-            background: var(--electric);
+            background: var(--warm);
         }
 
         .footer-social svg {
             width: 16px;
             height: 16px;
-            stroke: var(--fog);
-            transition: stroke 0.3s ease;
+            stroke: var(--cream);
+            fill: none;
+            stroke-width: 2;
+            transition: stroke 0.2s var(--ease);
         }
 
         .footer-social a:hover svg {
-            stroke: var(--void);
+            stroke: var(--charcoal);
         }
 
         @media (min-width: 768px) {
-            .footer { padding: 6rem 4rem; }
-            .footer-top {
-                grid-template-columns: 1fr 1fr;
+            .footer-grid {
+                grid-template-columns: 1.5fr 1fr;
             }
             .footer-links {
                 grid-template-columns: repeat(3, 1fr);
@@ -1021,395 +997,494 @@
             }
         }
 
-        /* ============ SCROLL INDICATOR ============ */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 2px;
-            background: var(--electric);
-            z-index: 9999;
-            transform-origin: left;
-            transform: scaleX(0);
-        }
-
-        /* ============ NOISE OVERLAY ============ */
-        .noise {
+        /* ============ MOBILE MENU ============ */
+        .mobile-menu {
             position: fixed;
             inset: 0;
-            pointer-events: none;
-            z-index: 9998;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background: var(--bg-secondary);
+            z-index: 99;
+            padding: 100px var(--space-md) var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s var(--ease);
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+            flex: 1;
+        }
+
+        .mobile-menu-links a {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-primary);
+            transition: color 0.2s var(--ease);
+        }
+
+        .mobile-menu-links a:hover {
+            color: var(--warm);
+        }
+
+        .mobile-menu .btn {
+            margin-top: auto;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <!-- Noise Overlay -->
-    <div class="noise" aria-hidden="true"></div>
-
-    <!-- Scroll Progress -->
-    <div class="scroll-indicator" id="scrollIndicator" aria-hidden="true"></div>
-
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-text">Initializing</div>
-        <div class="loader-bar"></div>
-    </div>
-
     <!-- Navigation -->
     <nav class="nav">
-        <a href="#" class="nav-logo">PATH<span>FINDER</span></a>
-        <ul class="nav-links">
-            <li><a href="#process">Process</a></li>
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <img src="../pathfinder-assets/pathfinder-mark-dark-48.png" alt="" aria-hidden="true">
+                <span class="nav-wordmark">Pathfinder Rewards</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#tiers">Tiers</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#partners">Partners</a></li>
+            </ul>
+
+            <a href="#partners" class="nav-cta">Get Started</a>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links">
+            <li><a href="#how-it-works">How It Works</a></li>
             <li><a href="#tiers">Tiers</a></li>
             <li><a href="#benefits">Benefits</a></li>
             <li><a href="#partners">Partners</a></li>
         </ul>
-        <div class="nav-status">
-            <span class="status-dot"></span>
-            <span>Live</span>
-        </div>
-    </nav>
+        <a href="#partners" class="btn btn-primary">Get Started</a>
+    </div>
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-bg" aria-hidden="true"></div>
-        <div class="hero-grid" aria-hidden="true"></div>
-
         <div class="hero-content">
-            <div class="hero-label">EV Rewards Network</div>
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        Available nationwide
+                    </div>
 
-            <h1 class="hero-title">
-                <span class="line"><span>Charge.</span></span>
-                <span class="line"><span class="stroke">Earn.</span></span>
-                <span class="line"><span>Repeat.</span></span>
-            </h1>
+                    <h1>Earn Rewards <span class="highlight">Everywhere</span> You Charge</h1>
 
-            <div class="hero-bottom">
-                <div>
                     <p class="hero-desc">
-                        A loyalty network built for the electric age. Earn credits at charging stations nationwide. No apps. No complexity. Just rewards.
+                        Pathfinder Rewards is a loyalty program for EV drivers. Earn credits at participating charging locations nationwide. Open to everyone.
                     </p>
-                    <a href="#partners" class="hero-cta">
-                        Become a Partner
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
+
+                    <div class="hero-actions">
+                        <a href="#partners" class="btn btn-primary">
+                            Become a Partner
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="#how-it-works" class="btn btn-secondary">Learn More</a>
+                    </div>
                 </div>
 
-                <div class="hero-stats">
-                    <div class="stat">
-                        <div class="stat-value">500+</div>
-                        <div class="stat-label">Locations</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">15%</div>
-                        <div class="stat-label">Max Credit</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">$0</div>
-                        <div class="stat-label">To Join</div>
+                <div class="hero-visual">
+                    <div class="hero-compass">
+                        <img src="../pathfinder-assets/pathfinder-mark-dark-512.png" alt="Pathfinder compass logo">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Marquee -->
-    <div class="marquee" aria-hidden="true">
-        <div class="marquee-inner">
-            <span class="marquee-item">Free to join</span>
-            <span class="marquee-item">Nationwide network</span>
-            <span class="marquee-item">Instant rewards</span>
-            <span class="marquee-item">No app required</span>
-            <span class="marquee-item">Free to join</span>
-            <span class="marquee-item">Nationwide network</span>
-            <span class="marquee-item">Instant rewards</span>
-            <span class="marquee-item">No app required</span>
-        </div>
-    </div>
-
-    <!-- Process -->
-    <section class="process" id="process">
-        <div class="section-header" style="padding: 0 2rem; max-width: 1400px; margin: 0 auto;">
-            <div class="section-number">001</div>
-            <h2 class="section-title">How it works</h2>
-        </div>
-
-        <div class="process-grid" style="max-width: 1400px; margin: 3rem auto 0;">
-            <div class="process-step">
-                <div class="step-num">01</div>
-                <h3 class="step-title">Register</h3>
-                <p class="step-desc">Sign up at any participating location. Instant activation. No fees ever.</p>
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">How It Works</span>
+                <h2>Start Earning in Three Steps</h2>
+                <p>Join thousands of EV drivers already earning rewards with Pathfinder.</p>
             </div>
-            <div class="process-step">
-                <div class="step-num">02</div>
-                <h3 class="step-title">Charge</h3>
-                <p class="step-desc">Use your membership across the network. Charging, dining, retail, and more.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-num">03</div>
-                <h3 class="step-title">Earn</h3>
-                <p class="step-desc">Credits accumulate automatically. Level up for better rates and exclusive perks.</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Sign Up Free</h3>
+                        <p>Create your Pathfinder Rewards account at any participating location. It's free to join.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Visit Partner Locations</h3>
+                        <p>Use your membership at any Pathfinder partner location nationwide.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Earn Credits & Rewards</h3>
+                        <p>Earn credits on every visit. Unlock higher tiers and exclusive benefits.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Tiers -->
     <section class="tiers" id="tiers">
-        <div class="section-header" style="padding: 0 2rem; max-width: 1400px; margin: 0 auto;">
-            <div class="section-number">002</div>
-            <h2 class="section-title">Membership Levels</h2>
-        </div>
-
-        <div class="tiers-track" style="max-width: 1400px; margin: 3rem auto 0;">
-            <!-- Explorer -->
-            <div class="tier explorer">
-                <span class="tier-badge">Entry</span>
-                <div class="tier-icon"></div>
-                <h3 class="tier-name">Explorer</h3>
-                <p class="tier-tagline">Start here</p>
-                <div class="tier-rate">
-                    <span class="tier-percent">0%</span>
-                    <span class="tier-percent-label">Credit</span>
-                </div>
-                <ul class="tier-perks">
-                    <li>Points on every visit</li>
-                    <li>Member-only offers</li>
-                    <li>Digital card</li>
-                </ul>
-                <span class="tier-req">Automatic on signup</span>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Membership Tiers</span>
+                <h2>Rise Through the Ranks</h2>
+                <p>The more you charge, the more you earn. Progress through tiers for better rewards.</p>
             </div>
 
-            <!-- Voyager -->
-            <div class="tier voyager">
-                <span class="tier-badge">Regular</span>
-                <div class="tier-icon"></div>
-                <h3 class="tier-name">Voyager</h3>
-                <p class="tier-tagline">Frequent traveler</p>
-                <div class="tier-rate">
-                    <span class="tier-percent">5%</span>
-                    <span class="tier-percent-label">Credit</span>
+            <div class="tiers-grid">
+                <!-- Explorer -->
+                <div class="tier-card explorer">
+                    <div class="tier-header">
+                        <div>
+                            <div class="tier-icon">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/>
+                                </svg>
+                            </div>
+                            <h3 class="tier-name">Explorer</h3>
+                            <p class="tier-tagline">Start your journey</p>
+                        </div>
+                        <div class="tier-rate">
+                            <div class="tier-percent">0%</div>
+                            <div class="tier-percent-label">Credit Back</div>
+                        </div>
+                    </div>
+                    <ul class="tier-benefits">
+                        <li>Earn points at partner locations</li>
+                        <li>Member-only offers</li>
+                        <li>Digital membership card</li>
+                    </ul>
+                    <span class="tier-qualify">Automatic on signup</span>
                 </div>
-                <ul class="tier-perks">
-                    <li>All Explorer perks</li>
-                    <li>$25 birthday credit</li>
-                    <li>Priority support</li>
-                </ul>
-                <span class="tier-req">10+ visits / year</span>
-            </div>
 
-            <!-- Pioneer -->
-            <div class="tier pioneer">
-                <span class="tier-badge">Elite</span>
-                <div class="tier-icon"></div>
-                <h3 class="tier-name">Pioneer</h3>
-                <p class="tier-tagline">Power user</p>
-                <div class="tier-rate">
-                    <span class="tier-percent">10%</span>
-                    <span class="tier-percent-label">Credit</span>
+                <!-- Voyager -->
+                <div class="tier-card voyager">
+                    <div class="tier-header">
+                        <div>
+                            <div class="tier-icon">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 12h4l3-9 4 18 3-9h4"/>
+                                </svg>
+                            </div>
+                            <h3 class="tier-name">Voyager</h3>
+                            <p class="tier-tagline">Regular traveler</p>
+                        </div>
+                        <div class="tier-rate">
+                            <div class="tier-percent">5%</div>
+                            <div class="tier-percent-label">Credit Back</div>
+                        </div>
+                    </div>
+                    <ul class="tier-benefits">
+                        <li>All Explorer benefits</li>
+                        <li>$25 birthday credit</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <span class="tier-qualify">10+ visits/year</span>
                 </div>
-                <ul class="tier-perks">
-                    <li>All Voyager perks</li>
-                    <li>$100 annual bonus</li>
-                    <li>Lounge access</li>
-                    <li>Priority charging</li>
-                </ul>
-                <span class="tier-req">25+ visits / year</span>
-            </div>
 
-            <!-- Trailblazer -->
-            <div class="tier trailblazer">
-                <span class="tier-badge">Invite Only</span>
-                <div class="tier-icon"></div>
-                <h3 class="tier-name">Trailblazer</h3>
-                <p class="tier-tagline">The apex</p>
-                <div class="tier-rate">
-                    <span class="tier-percent">15%</span>
-                    <span class="tier-percent-label">Credit</span>
+                <!-- Pioneer -->
+                <div class="tier-card pioneer">
+                    <div class="tier-header">
+                        <div>
+                            <div class="tier-icon">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M8 3l4 8 5-5 2 15H2L8 3z"/>
+                                </svg>
+                            </div>
+                            <h3 class="tier-name">Pioneer</h3>
+                            <p class="tier-tagline">Elite status</p>
+                        </div>
+                        <div class="tier-rate">
+                            <div class="tier-percent">10%</div>
+                            <div class="tier-percent-label">Credit Back</div>
+                        </div>
+                    </div>
+                    <ul class="tier-benefits">
+                        <li>All Voyager benefits</li>
+                        <li>$100 annual bonus</li>
+                        <li>Premium lounge access</li>
+                        <li>Priority charging</li>
+                    </ul>
+                    <span class="tier-qualify">25+ visits/year</span>
                 </div>
-                <ul class="tier-perks">
-                    <li>All Pioneer perks</li>
-                    <li>$500 annual credit</li>
-                    <li>Exclusive events</li>
-                    <li>Dedicated concierge</li>
-                </ul>
-                <span class="tier-req">By invitation</span>
+
+                <!-- Trailblazer -->
+                <div class="tier-card trailblazer">
+                    <div class="tier-header">
+                        <div>
+                            <div class="tier-icon">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                                </svg>
+                            </div>
+                            <h3 class="tier-name">Trailblazer</h3>
+                            <p class="tier-tagline">Invite only</p>
+                        </div>
+                        <div class="tier-rate">
+                            <div class="tier-percent">15%</div>
+                            <div class="tier-percent-label">Credit Back</div>
+                        </div>
+                    </div>
+                    <ul class="tier-benefits">
+                        <li>All Pioneer benefits</li>
+                        <li>$500 annual credit</li>
+                        <li>Exclusive events</li>
+                        <li>Dedicated concierge</li>
+                    </ul>
+                    <span class="tier-qualify">By invitation</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Benefits -->
     <section class="benefits" id="benefits">
-        <div style="max-width: 1400px; margin: 0 auto;">
+        <div class="container">
             <div class="section-header">
-                <div class="section-number">003</div>
-                <h2 class="section-title">Member Benefits</h2>
+                <span class="section-label">Member Benefits</span>
+                <h2>Perks at Every Level</h2>
+                <p>Exclusive advantages that make every charge worthwhile.</p>
             </div>
 
-            <div class="benefits-list">
-                <div class="benefit">
-                    <span class="benefit-num">01</span>
-                    <div class="benefit-content">
-                        <h3>Automatic Credits</h3>
-                        <p>Earn on every charge. No scanning. No codes. Just plug in.</p>
-                    </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
                     <div class="benefit-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                         </svg>
                     </div>
+                    <h3>Credits on Every Charge</h3>
+                    <p>Earn credits automatically when you charge at any participating location.</p>
                 </div>
 
-                <div class="benefit">
-                    <span class="benefit-num">02</span>
-                    <div class="benefit-content">
-                        <h3>Premium Lounges</h3>
-                        <p>Access comfortable spaces at select locations while you wait.</p>
-                    </div>
+                <div class="benefit-card">
                     <div class="benefit-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
                             <circle cx="12" cy="7" r="4"/>
                         </svg>
                     </div>
+                    <h3>Premium Lounges</h3>
+                    <p>Access comfortable lounges at select locations while your vehicle charges.</p>
                 </div>
 
-                <div class="benefit">
-                    <span class="benefit-num">03</span>
-                    <div class="benefit-content">
-                        <h3>Priority Charging</h3>
-                        <p>Skip the queue during peak hours at busy stations.</p>
-                    </div>
+                <div class="benefit-card">
                     <div class="benefit-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
                             <polyline points="12 6 12 12 16 14"/>
                         </svg>
                     </div>
+                    <h3>Priority Charging</h3>
+                    <p>Higher tier members get priority access during peak times.</p>
                 </div>
 
-                <div class="benefit">
-                    <span class="benefit-num">04</span>
-                    <div class="benefit-content">
-                        <h3>Birthday Rewards</h3>
-                        <p>Annual credit boost for Voyager members and above.</p>
-                    </div>
+                <div class="benefit-card">
                     <div class="benefit-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="4" width="18" height="18" rx="2"/>
                             <line x1="16" y1="2" x2="16" y2="6"/>
                             <line x1="8" y1="2" x2="8" y2="6"/>
                             <line x1="3" y1="10" x2="21" y2="10"/>
                         </svg>
                     </div>
+                    <h3>Birthday Rewards</h3>
+                    <p>Receive special birthday credits as a Voyager member or above.</p>
                 </div>
 
-                <div class="benefit">
-                    <span class="benefit-num">05</span>
-                    <div class="benefit-content">
-                        <h3>Annual Bonuses</h3>
-                        <p>Milestone rewards for Pioneer and Trailblazer members.</p>
-                    </div>
+                <div class="benefit-card">
                     <div class="benefit-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 12 20 22 4 22 4 12"/>
+                            <rect x="2" y="7" width="20" height="5"/>
+                            <line x1="12" y1="22" x2="12" y2="7"/>
+                            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+                            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+                        </svg>
+                    </div>
+                    <h3>Annual Bonuses</h3>
+                    <p>Pioneer and Trailblazer members earn annual milestone bonuses.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
                         </svg>
                     </div>
+                    <h3>Exclusive Events</h3>
+                    <p>Get invites to member-only events and early access to new features.</p>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="benefit">
-                    <span class="benefit-num">06</span>
-                    <div class="benefit-content">
-                        <h3>Exclusive Events</h3>
-                        <p>Invitations to launches, previews, and member gatherings.</p>
-                    </div>
-                    <div class="benefit-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+    <!-- Partners -->
+    <section class="partners" id="partners">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">For Partners</span>
+                <h2>Bring Pathfinder to Your Location</h2>
+                <p>Partner with us to offer Pathfinder Rewards at your charging stations.</p>
+            </div>
+
+            <div class="partner-benefits">
+                <div class="partner-benefit">
+                    <div class="partner-benefit-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                             <circle cx="9" cy="7" r="4"/>
                             <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                         </svg>
                     </div>
+                    <h3>Customer Loyalty</h3>
+                    <p>Keep customers coming back with rewards they earn at your location.</p>
                 </div>
+
+                <div class="partner-benefit">
+                    <div class="partner-benefit-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3>Brand Exposure</h3>
+                    <p>Get featured in the Pathfinder network and reach more EV drivers.</p>
+                </div>
+
+                <div class="partner-benefit">
+                    <div class="partner-benefit-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                        </svg>
+                    </div>
+                    <h3>Join the Network</h3>
+                    <p>Be part of a growing network of premium charging destinations.</p>
+                </div>
+            </div>
+
+            <div class="partner-types">
+                <h4>Partner Categories</h4>
+                <div class="partner-icons">
+                    <div class="partner-type">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                        <span>Charging Networks</span>
+                    </div>
+                    <div class="partner-type">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                        <span>Hotels</span>
+                    </div>
+                    <div class="partner-type">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <path d="M16 10a4 4 0 0 1-8 0"/>
+                        </svg>
+                        <span>Retail</span>
+                    </div>
+                    <div class="partner-type">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                            <line x1="6" y1="1" x2="6" y2="4"/>
+                            <line x1="10" y1="1" x2="10" y2="4"/>
+                            <line x1="14" y1="1" x2="14" y2="4"/>
+                        </svg>
+                        <span>Restaurants</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="partner-cta">
+                <p>Interested in becoming a partner?</p>
+                <a href="mailto:partners@pathfinderrewards.com" class="partner-email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    partners@pathfinderrewards.com
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Partners CTA -->
-    <section class="partners-cta" id="partners">
-        <div class="cta-content">
-            <div class="cta-label">For Partners</div>
-            <h2 class="cta-title">Join the <span>Network</span></h2>
-            <p class="cta-desc">
-                Bring Pathfinder Rewards to your charging stations. Grow loyalty. Increase visits. Join the EV revolution.
-            </p>
-            <a href="mailto:partners@pathfinderrewards.com" class="cta-button">
-                Contact Us
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
-
-            <div class="partner-types">
-                <div class="partner-type">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-inner">
+                <h2>Ready to <span>Get Started?</span></h2>
+                <p>Join Pathfinder Rewards and start earning at partner locations nationwide.</p>
+                <a href="mailto:partners@pathfinderrewards.com" class="btn btn-primary">
+                    Partner With Us
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
-                    <span>Charging</span>
-                </div>
-                <div class="partner-type">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
-                    <span>Hotels</span>
-                </div>
-                <div class="partner-type">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                        <line x1="3" y1="6" x2="21" y2="6"/>
-                        <path d="M16 10a4 4 0 0 1-8 0"/>
-                    </svg>
-                    <span>Retail</span>
-                </div>
-                <div class="partner-type">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
-                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
-                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
-                        <line x1="6" y1="1" x2="6" y2="4"/>
-                        <line x1="10" y1="1" x2="10" y2="4"/>
-                        <line x1="14" y1="1" x2="14" y2="4"/>
-                    </svg>
-                    <span>Dining</span>
-                </div>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-top">
+        <div class="container">
+            <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="footer-logo">PATH<span>FINDER</span></div>
-                    <p class="footer-tagline">The EV driver's reward network. Earn everywhere you charge.</p>
+                    <div class="footer-logo">
+                        <img src="../pathfinder-assets/pathfinder-mark-white-48.png" alt="" aria-hidden="true">
+                        <span>Pathfinder Rewards</span>
+                    </div>
+                    <p class="footer-tagline">A loyalty program for EV drivers. Earn rewards everywhere you charge.</p>
                 </div>
 
                 <div class="footer-links">
                     <div class="footer-col">
                         <h4>Program</h4>
-                        <a href="#process">How It Works</a>
-                        <a href="#tiers">Tiers</a>
+                        <a href="#how-it-works">How It Works</a>
+                        <a href="#tiers">Membership Tiers</a>
                         <a href="#benefits">Benefits</a>
                     </div>
                     <div class="footer-col">
                         <h4>Partners</h4>
-                        <a href="#partners">Join Network</a>
-                        <a href="mailto:partners@pathfinderrewards.com">Contact</a>
+                        <a href="#partners">Become a Partner</a>
+                        <a href="mailto:partners@pathfinderrewards.com">Contact Us</a>
                     </div>
                     <div class="footer-col">
                         <h4>Company</h4>
@@ -1421,22 +1496,22 @@
             </div>
 
             <div class="footer-bottom">
-                <p class="footer-copy">&copy; 2025 Pathfinder Rewards</p>
+                <p class="footer-copy">&copy; 2025 Pathfinder Rewards. All rights reserved.</p>
                 <div class="footer-social">
                     <a href="#" aria-label="Twitter">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0 0 23 3z"/>
                         </svg>
                     </a>
                     <a href="#" aria-label="LinkedIn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
                             <rect x="2" y="9" width="4" height="12"/>
                             <circle cx="4" cy="4" r="2"/>
                         </svg>
                     </a>
                     <a href="#" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="20" rx="5"/>
                             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
@@ -1448,20 +1523,21 @@
     </footer>
 
     <script>
-        // Loader
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 1800);
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         });
 
-        // Scroll progress indicator
-        const scrollIndicator = document.getElementById('scrollIndicator');
-        window.addEventListener('scroll', () => {
-            const winScroll = document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = winScroll / height;
-            scrollIndicator.style.transform = `scaleX(${scrolled})`;
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-menu-links a, .mobile-menu .btn').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
         });
 
         // Smooth scroll
@@ -1474,6 +1550,22 @@
                 }
             });
         });
+
+        // Swap logo for dark mode
+        const updateLogos = () => {
+            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.querySelectorAll('.nav-logo img').forEach(img => {
+                img.src = isDark
+                    ? '../pathfinder-assets/pathfinder-mark-white-48.png'
+                    : '../pathfinder-assets/pathfinder-mark-dark-48.png';
+            });
+            document.querySelector('.hero-compass img').src = isDark
+                ? '../pathfinder-assets/pathfinder-mark-white-512.png'
+                : '../pathfinder-assets/pathfinder-mark-dark-512.png';
+        };
+
+        updateLogos();
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateLogos);
     </script>
 </body>
 </html>
